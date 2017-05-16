@@ -14,4 +14,8 @@
         <property name="key" column="KEY" type="java.lang.String" not-null="true"/>
         <property name="value" column="VALUE" type="java.lang.String"/>
     </class>
+
+    <query name="property.Property.get.by.key">
+        select property from property.Property as property where property.key= :key
+    </query>
 </hibernate-mapping>

@@ -1,3 +1,5 @@
+package services;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -9,12 +11,12 @@ public class HibernateExecutor<T> {
     private Session session;
     private Transaction tx;
 
-    public Object execute(HibernateAction action)
+    public T execute(HibernateAction<T> action)
     {
         try{
             session = HibernateUtils.getSessionFactory().openSession();
             tx = session.beginTransaction();
-            Object result = action.execute(session);
+            T result = action.execute(session);
             tx.commit();
             return result;
         }
