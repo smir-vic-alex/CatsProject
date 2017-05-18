@@ -12,7 +12,7 @@ public class PropertyService extends BusinessService<Property> {
     public Property getPropetyByKey(final String key) {
         return new HibernateExecutor<Property>().execute((session) ->
                 {
-                    Query<Property> query = session.createQuery( "property.Property.get.by.key", Property.class);
+                    Query<Property> query = session.createNamedQuery( "property.Property.get.by.key", Property.class);
                     query.setParameter("key", key);
                     return query.getSingleResult();
                 }

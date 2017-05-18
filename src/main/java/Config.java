@@ -1,7 +1,7 @@
-import javafx.application.Application;
+import property.Property;
 
-import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -10,15 +10,27 @@ import java.util.Properties;
  */
 public class Config {
 
-    //TODO заменить на асихронную мапу
-    public static Properties properties = new Properties();
+    private static Map<String,String> map;
 
     public static void loadProperties(){
-        try(InputStream inputStream = Application.class.getResourceAsStream("/vk-application-config.properties")){
+        try(InputStream inputStream = Property.class.getResourceAsStream("/vk-application-config.properties")){
+            Properties properties = new Properties();
             properties.load(inputStream);
+
+            map = new HashMap<>();
+            for (Map.Entry entry :properties.entrySet()){
+               map.put(entry.getKey().toString(),entry.getValue().toString());
+            }
+
+
         }
         catch (Exception e){
             e.printStackTrace();
         }
     }
+
+    public static Map<String, String> getProperties() {
+        return map;
+    }
+
 }

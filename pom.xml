@@ -8,9 +8,6 @@
     <artifactId>test-vk-api</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>Common</module>
-    </modules>
     <!--<packaging>war</packaging>-->
 
     <build>
@@ -71,6 +68,14 @@
             <version>0.4.3</version>
         </dependency>
 
+
+        <dependency>
+            <groupId>ojdbc6</groupId>
+            <artifactId>com.ojdbc6</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>C:/Users/Виктор/.m2/repository/oracle/ojdbc6/11.2.0.2.0/ojdbc6.jar</systemPath>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>

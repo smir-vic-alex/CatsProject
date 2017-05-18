@@ -1,4 +1,5 @@
 import com.vk.api.sdk.client.actors.UserActor;
+import property.PropertyService;
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -10,11 +11,10 @@ public class DesktopJob {
 
     private PrintStream out = System.out;
     private Scanner in = new Scanner(System.in);
-
+    private PropertyService propertyService = new PropertyService();
     public void doJob(){
         try {
             Config.loadProperties();
-            Config.properties.get("code.code");
             out.println("Desktop version VK API is running");
             out.println("Please copy this url and put in browser: ");
             out.println(VKClientConnectionHelper.connectionUrl(00000, "page", "https://oauth.vk.com/blank.html", "code", "offline", "5.60"));

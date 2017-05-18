@@ -6,6 +6,8 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
+import java.util.Locale;
+
 /**
  * Created by Виктор on 15.05.2017.
  */
@@ -14,6 +16,7 @@ public class HibernateUtils {
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
+        Locale.setDefault(new Locale("EN"));
         try {
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .configure("hibernate.cfg.xml").build();
@@ -23,6 +26,7 @@ public class HibernateUtils {
             return metadata.getSessionFactoryBuilder().build();
         } catch (Throwable ex) {
 
+            ex.printStackTrace();
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
