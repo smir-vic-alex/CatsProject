@@ -1,4 +1,4 @@
-package services;
+package hibernate;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;

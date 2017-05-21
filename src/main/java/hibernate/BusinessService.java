@@ -1,4 +1,4 @@
-package services;
+package hibernate;
 
 /**
  * Created by Виктор on 15.05.2017.
