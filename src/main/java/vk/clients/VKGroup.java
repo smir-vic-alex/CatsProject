@@ -14,6 +14,10 @@ public class VKGroup implements VKClient{
     private List<Access> accesses;
     private GroupActor groupActor;
 
+    public VKGroup(GroupActor groupActor) {
+        this.groupActor = groupActor;
+    }
+
     public Long getId() {
         return id;
     }

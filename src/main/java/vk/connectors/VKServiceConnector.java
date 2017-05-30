@@ -1,6 +1,6 @@
 package vk.connectors;
 
-import exeptions.connectors.VKServiceConnectorException;
+import exeptions.connectors.ConnectorException;
 import vk.clients.VKService;
 
 /**
@@ -10,7 +10,7 @@ import vk.clients.VKService;
 public class VKServiceConnector implements VKConnector<VKService> {
 
     @Override
-    public VKService login() throws VKServiceConnectorException {
+    public VKService login() throws ConnectorException {
         return new VKService();
     }
 }

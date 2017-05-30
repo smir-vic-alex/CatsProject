@@ -4,9 +4,10 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.UserAuthResponse;
-import configs.ApiSetting;
-import configs.SettingFactory;
-import exeptions.connectors.VKUserConnectorException;
+import settings.vk.VKApiSetting;
+import settings.SettingFactory;
+import exeptions.connectors.ConnectorException;
+import settings.vk.VKApiUserSetting;
 import vk.clients.VKUser;
 
 import java.io.PrintStream;
@@ -21,13 +22,13 @@ public class VKUserConnector implements VKConnector <VKUser> {
     private PrintStream out = System.out;
     private Scanner in = new Scanner(System.in);
 
-    public VKUser login() throws VKUserConnectorException {
+    public VKUser login() throws ConnectorException {
 
-        out.println(SettingFactory.getSetting(ApiSetting.class).getAuthUrl());
+        out.println(SettingFactory.getSetting(VKApiUserSetting.class).getAuthUrl());
         String code = in.nextLine();
 
         VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
-        ApiSetting apiConfig = SettingFactory.getSetting(ApiSetting.class);
+        VKApiSetting apiConfig = SettingFactory.getSetting(VKApiSetting.class);
 
         UserAuthResponse authResponse;
         try {
@@ -37,11 +38,11 @@ public class VKUserConnector implements VKConnector <VKUser> {
 
         }
         catch (Exception e) {
-            throw new VKUserConnectorException();
+            throw new ConnectorException();
         }
 
         if (authResponse == null)
-            throw new VKUserConnectorException();
+            throw new ConnectorException();
 
         return new VKUser(new UserActor(authResponse.getUserId(), authResponse.getAccessToken()));
     }

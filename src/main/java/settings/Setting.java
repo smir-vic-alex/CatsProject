@@ -1,4 +1,4 @@
-package configs;
+package settings;
 
 import property.Property;
 import property.PropertyService;
@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
+ * Базовый класс настроек приложения
  * Created by Smirnov Victor on 09.04.17.
  */
 public abstract class Setting {
