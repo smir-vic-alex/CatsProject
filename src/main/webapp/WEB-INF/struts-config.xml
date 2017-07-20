@@ -7,17 +7,46 @@
 <struts-config>
 
     <form-beans>
-        <form-bean name="IndexActionForm" type="actionForms.IndexActionForm"/>
+        <form-bean name="LoginActionForm" type="actionForms.LoginActionForm"/>
+        <form-bean name="ClientAddVKGroupActionForm" type="actionForms.ClientAddVKGroupActionForm"/>
+        <form-bean name="ClientAddVKProfileActionForm" type="actionForms.ClientAddVKProfileActionForm"/>
     </form-beans>
 
     <action-mappings>
-        <action path="/index"
-                type="actions.IndexAction"
-                name="IndexActionForm"
+        <!--Логин пользователя-->
+        <action path="/login"
+                type="actions.LoginAction"
+                name="LoginActionForm"
                 scope="request"
                 parameter="unused">
-            <forward name="success" path="/WEB-INF/jsp/answer.jsp"
+            <forward name="clientPage" path="/private/client/page/main.do" redirect="true"/>
         </action>
+        <!--Главная страница пользователя с его продуктами, данными по остаткам-->
+        <action path="/private/client/page/main"
+                type="actions.ClientMainPageAction"
+                name="LoginActionForm"
+                scope="request"
+                parameter="unused">
+            <forward name="success" path="/WEB-INF/jsp/clientStartPage.jsp"/>
+        </action>
+        <!--Привязка аккаунта соцсети к профилю-->
+        <action path="/private/client/addVKProfile"
+                type="actions.ClientAddVKProfile"
+                name="ClientAddVKProfileActionForm"
+                scope="request"
+                parameter="unused">
+            <forward name="success" path="WEB-INF/jsp/addVKProfile.jsp"/>
+        </action>
+        <!--Добавление группы для администрирования-->
+        <action path="/private/client/addVKGroup"
+                type="actions.ClientAddVKGroup"
+                name="ClientAddVKGroupActionForm"
+                scope="request"
+                parameter="unused">
+            <forward name="success" path="WEB-INF/jsp/addVKGroup.jsp"/>
+        </action>
+        <!--Редактирование групп для администрирования-->
+
     </action-mappings>
 
 
