@@ -1,5 +1,6 @@
 package actions;
 
+import actionForms.CodeVKActionForm;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -9,12 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Created by SBT-Smirnov-VA on 20.07.2017.
+ * Created by SBT-Smirnov-VA on 21.07.2017.
  */
-public class ClientMainPageAction extends Action {
-
+public class CodeVKAction extends Action {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        CodeVKActionForm codeVKActionForm = (CodeVKActionForm) form;
+        codeVKActionForm.getCode();
+
         return mapping.findForward("success");
     }
 }

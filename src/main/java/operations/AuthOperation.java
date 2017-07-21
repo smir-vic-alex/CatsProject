@@ -15,11 +15,11 @@ public class AuthOperation extends Operation {
         if (userLogin != null)
         {
             Password userPassword = AUTH_SERVICE.findPasswordByLogin(userLogin, password);
-            if (userPassword.getPassword().equals(password))
-            {
+//            if (userPassword.getPassword().equals(password))
+//            {
                 return;
-            }
-            throw new AccessLoginFailedException();
+//            }
+//            throw new AccessLoginFailedException();
         }
 
         throw new AccessLoginFailedException();

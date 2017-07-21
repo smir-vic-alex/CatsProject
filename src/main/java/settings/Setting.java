@@ -21,8 +21,8 @@ public abstract class Setting {
     protected Setting(String fileName) {
         this.fileName = fileName;
         loadPropertiesFromFile();
-        refreshPropertiesByDB();
-        refreshPropertiesByCustomConfig();
+        //refreshPropertiesByDB();
+        //refreshPropertiesByCustomConfig();
     }
 
     private void loadPropertiesFromFile(){

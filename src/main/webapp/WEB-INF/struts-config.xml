@@ -10,9 +10,12 @@
         <form-bean name="LoginActionForm" type="actionForms.LoginActionForm"/>
         <form-bean name="ClientAddVKGroupActionForm" type="actionForms.ClientAddVKGroupActionForm"/>
         <form-bean name="ClientAddVKProfileActionForm" type="actionForms.ClientAddVKProfileActionForm"/>
+        <form-bean name="CodeVKActionForm" type="actionForms.CodeVKActionForm"/>
     </form-beans>
 
     <action-mappings>
+        <action path="/index"
+                forward="/WEB-INF/jsp/index.jsp"/>
         <!--Логин пользователя-->
         <action path="/login"
                 type="actions.LoginAction"
@@ -31,7 +34,7 @@
         </action>
         <!--Привязка аккаунта соцсети к профилю-->
         <action path="/private/client/addVKProfile"
-                type="actions.ClientAddVKProfile"
+                type="actions.ClientAddVKProfileAction"
                 name="ClientAddVKProfileActionForm"
                 scope="request"
                 parameter="unused">
@@ -39,13 +42,25 @@
         </action>
         <!--Добавление группы для администрирования-->
         <action path="/private/client/addVKGroup"
-                type="actions.ClientAddVKGroup"
+                type="actions.ClientAddVKGroupAction"
                 name="ClientAddVKGroupActionForm"
                 scope="request"
                 parameter="unused">
             <forward name="success" path="WEB-INF/jsp/addVKGroup.jsp"/>
         </action>
         <!--Редактирование групп для администрирования-->
+        <action path="/private/vklogin"
+                type="actions.VKRedirectAction">
+            <forward name="redirect" path="https://oauth.vk.com/authorize?"/>
+        </action>
+        <!--Получение code от vk.com-->
+        <action path="/private/redirect/uri"
+                type="actions.CodeVKAction"
+                name="CodeVKActionForm"
+                scope="request"
+                parameter="unused">
+            <forward name="success" path="/private/client/page/main.do"/>
+        </action>
 
     </action-mappings>
 

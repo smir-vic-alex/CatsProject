@@ -5,5 +5,5 @@ import org.apache.struts.action.Action;
 /**
  * Created by SBT-Smirnov-VA on 20.07.2017.
  */
-public class ClientAddVKGroup extends Action {
+public class ClientAddVKGroupAction extends Action {
 }
