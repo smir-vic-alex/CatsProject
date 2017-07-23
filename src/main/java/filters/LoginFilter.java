@@ -10,37 +10,42 @@ import java.io.IOException;
  */
 public class LoginFilter implements Filter {
 
-    private String errorPageUrl;
+    private String indexPageUrl;
+    private String loginPageUrl;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
         if (filterConfig != null) {
-            errorPageUrl = filterConfig.getInitParameter("errorPageUrl");
+            indexPageUrl = filterConfig.getInitParameter("indexPageUrl");
+            loginPageUrl = filterConfig.getInitParameter("loginPageUrl");
         }
-        if (errorPageUrl == null) {
-            throw new ServletException("Не установлен параметр инициализации errorPageUrl");
+        if (indexPageUrl == null || loginPageUrl == null) {
+            throw new ServletException("Не установлен параметр инициализации");
         }
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        if (errorPageUrl == null)
-        {
-            throw new ServletException();
-        }
 
         HttpServletRequest request  = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
 
-        if (!errorPageUrl.equals(request.getServletPath()) && (request.getSession()==null || request.getSession(false).getAttribute("login") == null))
-        {
-            response.sendRedirect(request.getContextPath() + errorPageUrl);
-        }
-        else
-        {
+        //Разрешаем переходить по страницам только если пользователь прошел авторизацию, либо на разрешенные урлы
+        if (userIsLogin(request) || isAcceptedUrl(request)) {
             filterChain.doFilter(servletRequest, servletResponse);
         }
+        else {
+            response.sendRedirect(request.getContextPath() + indexPageUrl);
+        }
+    }
+
+    private boolean userIsLogin(HttpServletRequest request){
+        return "true".equals(request.getSession().getAttribute("login"));
+    }
+
+    private boolean isAcceptedUrl(HttpServletRequest request){
+        return indexPageUrl.equals(request.getServletPath()) || loginPageUrl.equals(request.getServletPath());
     }
 
     @Override

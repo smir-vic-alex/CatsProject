@@ -17,8 +17,6 @@
 
 <p>Your email address is: .</p>
 
-<html:form action="">
 
-</html:form>
 </body>
 </html>

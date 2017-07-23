@@ -20,6 +20,7 @@ public class LoginAction extends Action {
 
         try {
             authOperation.initialize(loginActionForm.getLogin(), loginActionForm.getPassword());
+            request.getSession().setAttribute("login", "true");
         }
         catch (AccessLoginFailedException e){
             saveError(request, "Login failed");
