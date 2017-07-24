@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><html:submit value="Login" /></td>
+            <td><input type="submit" name="actionMethod" value="button.start"/></td>
         </tr>
         </tbody>
     </table>

@@ -1,6 +1,7 @@
 package operations;
 
 import exeptions.access.AccessLoginFailedException;
+import utils.WebContext;
 
 /**
  * Created by SBT-Smirnov-VA on 20.07.2017.
@@ -17,6 +18,7 @@ public class AuthOperation extends Operation {
             Password userPassword = AUTH_SERVICE.findPasswordByLogin(userLogin, password);
 //            if (userPassword.getPassword().equals(password))
 //            {
+                WebContext.getCurrentRequest().getSession(false).setAttribute("user", userLogin);
                 return;
 //            }
 //            throw new AccessLoginFailedException();
