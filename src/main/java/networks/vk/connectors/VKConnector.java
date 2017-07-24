@@ -1,10 +1,10 @@
-package vk.connectors;
+package networks.vk.connectors;
 
 import exeptions.connectors.ConnectorException;
-import vk.clients.VKClient;
+import networks.vk.clients.VKClient;
 
 /**
- * Коннектор к vk.com
+ * Коннектор к networks.vk.com
  * Created by Виктор on 28.05.2017.
  */
 public interface VKConnector<T extends VKClient> {

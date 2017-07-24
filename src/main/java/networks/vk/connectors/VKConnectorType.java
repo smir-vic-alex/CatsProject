@@ -1,4 +1,4 @@
-package vk.connectors;
+package networks.vk.connectors;
 
 /**
  * Тип коннектора

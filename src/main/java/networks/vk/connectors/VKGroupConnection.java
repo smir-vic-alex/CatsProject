@@ -1,4 +1,4 @@
-package vk.connectors;
+package networks.vk.connectors;
 
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.GroupActor;
@@ -8,7 +8,7 @@ import settings.vk.VKApiGroupSetting;
 import settings.vk.VKApiSetting;
 import settings.SettingFactory;
 import exeptions.connectors.ConnectorException;
-import vk.clients.VKGroup;
+import networks.vk.clients.VKGroup;
 
 import java.io.PrintStream;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package vk.clients;
+package networks.vk.clients;
 
 import accesses.Access;
 import com.vk.api.sdk.client.actors.GroupActor;

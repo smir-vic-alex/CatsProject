@@ -1,4 +1,4 @@
-package vk.clients;
+package networks.vk.clients;
 
 /**
  * Внутреннее представление сервиса

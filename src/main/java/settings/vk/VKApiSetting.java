@@ -3,7 +3,7 @@ package settings.vk;
 import settings.Setting;
 
 /**
- * Общие настройки работы с vk API
+ * Общие настройки работы с networks.vk API
  * Created by Виктор on 20.05.2017.
  */
 public class VKApiSetting extends Setting {

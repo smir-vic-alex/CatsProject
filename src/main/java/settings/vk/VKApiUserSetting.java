@@ -1,7 +1,7 @@
 package settings.vk;
 
 /**
- * Настройки для пользователя vk
+ * Настройки для пользователя networks.vk
  * Created by Виктор on 31.05.2017.
  */
 public class VKApiUserSetting extends VKApiSetting {

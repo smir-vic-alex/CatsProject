@@ -1,7 +1,7 @@
-package vk.connectors;
+package networks.vk.connectors;
 
 import exeptions.connectors.ConnectorException;
-import vk.clients.VKService;
+import networks.vk.clients.VKService;
 
 /**
  * Коннектор для сервиса

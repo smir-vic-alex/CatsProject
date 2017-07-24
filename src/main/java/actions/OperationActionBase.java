@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class OperationActionBase extends LookupDispatchAction {
     @Override
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        processActionForm();
         return super.execute(mapping, form, request, response);
     }
 
@@ -24,5 +25,5 @@ public class OperationActionBase extends LookupDispatchAction {
     public void createOperation(){}
     public void checkAccess(){}
     public void saveMessages(){}
-    public void createFormProcessor(){}
+    public void processActionForm(){}
 }

@@ -1,4 +1,4 @@
-package vk.connectors;
+package networks.vk.connectors;
 
 import exeptions.connectors.ConnectorNotFoundException;
 

@@ -11,7 +11,7 @@ public class AuthService extends BusinessService {
         return new Login();
     }
 
-    public Password findPasswordByLogin(Login login, String password){
+    public Password findPasswordByLogin(Login login){
         return new Password();
     }
 
