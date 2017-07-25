@@ -5,7 +5,7 @@ package hibernate;
  */
 public class BusinessService<T> {
 
-    public void saveOrUpdate(final T object) {
+    public <T> void saveOrUpdate(final T object) {
         new HibernateExecutor<T>().execute((session) ->
                 {
                     session.saveOrUpdate(object);
