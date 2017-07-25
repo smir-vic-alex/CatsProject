@@ -5,18 +5,18 @@ package utils;
  */
 public class StringUtils {
 
-    public static boolean isEmpty(String string){
+    public static boolean isEmpty(String string) {
         return !isNotEmpty(string);
     }
 
-    public static boolean isNotEmpty(String string){
+    public static boolean isNotEmpty(String string) {
         return string != null && string.length() > 0;
     }
 
-    public static boolean isNotEmpty(String... strings){
-        if(strings != null){
-            for (String string : strings){
-                if (isEmpty(string)){
+    public static boolean isNotEmpty(String... strings) {
+        if (strings != null) {
+            for (String string : strings) {
+                if (isEmpty(string)) {
                     return false;
                 }
             }

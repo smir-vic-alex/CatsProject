@@ -7,7 +7,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 public class EncryptUtils {
 
-    public static String code(String string){
+    public static String code(String string) {
         StringBuilder stringBuilder = new StringBuilder(string);
         stringBuilder.append("123_salt_123");
 

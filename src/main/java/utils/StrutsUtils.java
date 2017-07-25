@@ -10,14 +10,10 @@ import javax.servlet.jsp.PageContext;
  */
 public final class StrutsUtils {
 
-    public static Object currentForm(PageContext pageContext)
-    {
-        try
-        {
+    public static Object currentForm(PageContext pageContext) {
+        try {
             return TagUtils.getInstance().lookup(pageContext, Constants.BEAN_KEY, null);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return null;
         }
     }

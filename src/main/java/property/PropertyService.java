@@ -18,8 +18,7 @@ public class PropertyService extends BusinessService<Property> {
                         Query<Property> query = session.createNamedQuery("property.Property.get.by.key", Property.class);
                         query.setParameter("key", key);
                         return query.getSingleResult();
-                    }
-                    catch (NoResultException e){
+                    } catch (NoResultException e) {
                         return null;
                     }
                 }

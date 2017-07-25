@@ -8,26 +8,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class WebContext {
 
-    private static ThreadLocal<HttpServletRequest>  currentRequest  = new ThreadLocal<HttpServletRequest>();
+    private static ThreadLocal<HttpServletRequest> currentRequest = new ThreadLocal<HttpServletRequest>();
     private static ThreadLocal<HttpServletResponse> currentResponce = new ThreadLocal<HttpServletResponse>();
 
-    public static HttpServletRequest getCurrentRequest()
-    {
+    public static HttpServletRequest getCurrentRequest() {
         return currentRequest.get();
     }
 
-    public static void setCurrentRequest(HttpServletRequest request)
-    {
+    public static void setCurrentRequest(HttpServletRequest request) {
         currentRequest.set(request);
     }
 
-    public static HttpServletResponse getCurrentResponce()
-    {
+    public static HttpServletResponse getCurrentResponce() {
         return currentResponce.get();
     }
 
-    public static void setCurrentResponce(HttpServletResponse response)
-    {
+    public static void setCurrentResponce(HttpServletResponse response) {
         currentResponce.set(response);
     }
 

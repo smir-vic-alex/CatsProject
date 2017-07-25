@@ -9,7 +9,7 @@ import java.util.List;
  * Внутреннее представление клиента как сообщество (группа)
  * Created by Виктор on 28.05.2017.
  */
-public class VKGroup implements VKClient{
+public class VKGroup implements VKClient {
     private Long id;
     private List<Access> accesses;
     private GroupActor groupActor;

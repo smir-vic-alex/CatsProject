@@ -15,14 +15,13 @@ public class SettingFactory {
 
     private static volatile Map<Class<? extends Setting>, ? super Setting> settings = new HashMap<>();
 
-    static
-    {
+    static {
         settings.put(VKApiSetting.class, new VKApiSetting("/vk/vk-application-config.properties"));
         settings.put(VKApiUserSetting.class, new VKApiUserSetting("/vk/vk-application-config.properties"));
         settings.put(VKApiGroupSetting.class, new VKApiGroupSetting("/vk/vk-application-config.properties"));
     }
 
-    public static <T extends Setting> T getSetting(Class<T> configKey){
+    public static <T extends Setting> T getSetting(Class<T> configKey) {
         return (T) settings.get(configKey);
     }
 

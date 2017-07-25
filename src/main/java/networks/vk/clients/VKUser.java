@@ -10,7 +10,7 @@ import java.util.List;
  * Внутреннее представление пользователя
  * Created by Виктор on 28.05.2017.
  */
-public class VKUser implements VKClient{
+public class VKUser implements VKClient {
     private Long id;
     private List<Access> accesses;
     private UserActor userActor;

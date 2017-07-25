@@ -20,11 +20,33 @@
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" name="actionMethod" value="button.start"/></td>
+            <td><html:submit value="Login" /></td>
         </tr>
         </tbody>
     </table>
+</html:form>
 
-
-
+<html:form action="/register">
+    <table border="0">
+        <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Enter your login:</td>
+            <td><html:text property="login" /></td>
+        </tr>
+        <tr>
+            <td>Enter your password:</td>
+            <td><html:text property="password" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><html:submit value="Join" /></td>
+        </tr>
+        </tbody>
+    </table>
 </html:form>

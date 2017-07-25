@@ -35,9 +35,9 @@ public class LoginAction extends OperationActionBase {
         WebContext.getCurrentRequest().getSession(false).setAttribute("login", true);
     }
 
-    private void checkPassword(Login login, String inputPassword) throws LoginException{
+    private void checkPassword(Login login, String inputPassword) throws LoginException {
         Password password = service.findPasswordByLogin(login);
-        if (!password.getPassword().equals(EncryptUtils.code(inputPassword))){
+        if (!password.getPassword().equals(EncryptUtils.code(inputPassword))) {
             incrementAttemptsCount();
             throw new LoginException();
         }
@@ -45,16 +45,16 @@ public class LoginAction extends OperationActionBase {
 
     private Login getLogin(String loginName) throws LoginNotFoundException {
         Login login = service.findByLogin(loginName);
-        if(login ==null) {
+        if (login == null) {
             incrementAttemptsCount();
             throw new LoginNotFoundException();
         }
         return login;
     }
 
-    private void incrementAttemptsCount(){
+    private void incrementAttemptsCount() {
         Integer attemptsCount = (Integer) WebContext.getCurrentRequest().getSession(false).getAttribute("attemptsCount");
-        if (attemptsCount == null){
+        if (attemptsCount == null) {
             attemptsCount = 0;
         }
         attemptsCount++;

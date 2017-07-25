@@ -15,15 +15,22 @@ public class OperationActionBase extends LookupDispatchAction {
         return super.execute(mapping, form, request, response);
     }
 
-    protected void saveError(HttpServletRequest request, String error)
-    {
+    protected void saveError(HttpServletRequest request, String error) {
         ActionMessages msgs = new ActionMessages();
         ActionMessage msg = new ActionMessage(error, false);
         msgs.add(ActionMessages.GLOBAL_MESSAGE, msg);
         saveErrors(request, msgs);
     }
-    public void createOperation(){}
-    public void checkAccess(){}
-    public void saveMessages(){}
-    public void processActionForm(){}
+
+    public void createOperation() {
+    }
+
+    public void checkAccess() {
+    }
+
+    public void saveMessages() {
+    }
+
+    public void processActionForm() {
+    }
 }

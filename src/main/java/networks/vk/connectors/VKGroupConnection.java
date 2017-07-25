@@ -36,8 +36,7 @@ public class VKGroupConnection implements VKConnector<VKGroup> {
             authResponse = vk.oauth()
                     .groupAuthorizationCodeFlow(apiConfig.getApplicationId(), apiConfig.getApplicationSecretKey(), apiConfig.getApplicationRedirectUri(), code)
                     .execute();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ConnectorException();
         }
 

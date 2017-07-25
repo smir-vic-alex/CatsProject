@@ -8,8 +8,8 @@ import exeptions.connectors.ConnectorNotFoundException;
  */
 public class VKConnectorFactory {
 
-    public static VKConnector getConnector(VKConnectorType type) throws ConnectorNotFoundException{
-        switch (type){
+    public static VKConnector getConnector(VKConnectorType type) throws ConnectorNotFoundException {
+        switch (type) {
             case GROUP:
                 return new VKGroupConnection();
             case USER:

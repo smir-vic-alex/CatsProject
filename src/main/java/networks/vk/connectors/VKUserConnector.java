@@ -17,7 +17,7 @@ import java.util.Scanner;
  * Коннектор для логина пользователем
  * Created by Smirnov Victor on 09.04.17.
  */
-public class VKUserConnector implements VKConnector <VKUser> {
+public class VKUserConnector implements VKConnector<VKUser> {
 
     private PrintStream out = System.out;
     private Scanner in = new Scanner(System.in);
@@ -36,8 +36,7 @@ public class VKUserConnector implements VKConnector <VKUser> {
                     .userAuthorizationCodeFlow(apiConfig.getApplicationId(), apiConfig.getApplicationSecretKey(), apiConfig.getApplicationRedirectUri(), code)
                     .execute();
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new ConnectorException();
         }
 

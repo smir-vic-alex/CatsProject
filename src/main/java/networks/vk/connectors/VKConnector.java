@@ -11,6 +11,7 @@ public interface VKConnector<T extends VKClient> {
 
     /**
      * Залогиниться пользователем
+     *
      * @return пользователь
      * @throws ConnectorException
      */

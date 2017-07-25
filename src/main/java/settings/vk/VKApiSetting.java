@@ -25,19 +25,19 @@ public class VKApiSetting extends Setting {
         version = getProperty("settings.vk.VKApiSetting.application.version");
     }
 
-    public String getApplicationSecretKey(){
+    public String getApplicationSecretKey() {
         return applicationSecretKey;
     }
 
-    public Integer getApplicationId(){
+    public Integer getApplicationId() {
         return applicationId;
     }
 
-    public String getApplicationRedirectUri(){
+    public String getApplicationRedirectUri() {
         return applicationRedirectUri;
     }
 
-    public String getVersion(){
+    public String getVersion() {
         return version;
     }
 

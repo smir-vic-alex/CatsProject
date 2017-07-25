@@ -27,12 +27,9 @@ public class ContextFilter implements Filter {
         WebContext.setCurrentRequest(request);
         WebContext.setCurrentResponce(response);
 
-        try
-        {
+        try {
             filterChain.doFilter(servletRequest, servletResponse);
-        }
-        finally
-        {
+        } finally {
             WebContext.setCurrentRequest(null);
             WebContext.setCurrentResponce(null);
         }

@@ -7,11 +7,11 @@ import hibernate.BusinessService;
  */
 public class AuthService extends BusinessService {
 
-    public Login findByLogin(String login){
+    public Login findByLogin(String login) {
         return new Login();
     }
 
-    public Password findPasswordByLogin(Login login){
+    public Password findPasswordByLogin(Login login) {
         return new Password();
     }
 
