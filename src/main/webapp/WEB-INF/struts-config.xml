@@ -8,7 +8,7 @@
 
     <form-beans>
         <form-bean name="LoginActionForm" type="actionForms.LoginActionForm"/>
-        <form-bean name="RegisterActionForm" type=""
+        <form-bean name="RegisterActionForm" type="actionForms.RegisterActionForm"/>
         <form-bean name="ClientAddVKGroupActionForm" type="actionForms.ClientAddVKGroupActionForm"/>
         <form-bean name="ClientAddVKProfileActionForm" type="actionForms.ClientAddVKProfileActionForm"/>
         <form-bean name="CodeVKActionForm" type="actionForms.CodeVKActionForm"/>
@@ -39,6 +39,7 @@
                 name="RegisterActionForm"
                 scope="request"
                 parameter="unused">
+            <forward name="register" path="/WEB-INF/jsp/register.jsp"/>
             <forward name="success" path="/private/client/page/main.do" redirect="true"/>
         </action>
         <!--Привязка аккаунта соцсети к профилю-->

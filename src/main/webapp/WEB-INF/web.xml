@@ -16,6 +16,10 @@
             <param-name>loginPageUrl</param-name>
             <param-value>/login.do</param-value>
         </init-param>
+        <init-param>
+            <param-name>registerUrl</param-name>
+            <param-value>/register.do</param-value>
+        </init-param>
     </filter>
 
     <filter>
