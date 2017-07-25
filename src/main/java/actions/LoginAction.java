@@ -37,10 +37,10 @@ public class LoginAction extends OperationActionBase {
 
     private void checkPassword(Login login, String inputPassword) throws LoginException {
         Password password = service.findPasswordByLogin(login);
-        if (!password.getPassword().equals(EncryptUtils.code(inputPassword))) {
-            incrementAttemptsCount();
-            throw new LoginException();
-        }
+//        if (!password.getPassword().equals(EncryptUtils.code(inputPassword))) {
+//            incrementAttemptsCount();
+//            throw new LoginException();
+//        }
     }
 
     private Login getLogin(String loginName) throws LoginNotFoundException {

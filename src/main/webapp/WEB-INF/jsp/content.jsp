@@ -1,0 +1,6 @@
+<blockquote>
+    <p>
+        “QUISQUE IN ENIM VELIT, AT DIGNISSIM EST. NULLA UL CORPER, DOLOR AC PELLENTESQUE PLACERAT, JUSTO TELLUS GRAVIDA ERAT, VEL PORTTITOR LIBERO ERAT.”
+    </p>
+    <cite>John Doe, Lorem Ipsum</cite>
+</blockquote>

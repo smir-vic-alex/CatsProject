@@ -74,5 +74,9 @@
 
     </action-mappings>
 
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config"
+                      value="/WEB-INF/tiles-definitions.xml"/>
+    </plug-in>
 
 </struts-config>
