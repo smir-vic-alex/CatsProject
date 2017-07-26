@@ -46,7 +46,7 @@ public class LoginFilter implements Filter {
     }
 
     private boolean isAcceptedUrl(HttpServletRequest request) {
-        return indexPageUrl.equals(request.getServletPath()) || loginPageUrl.equals(request.getServletPath()) || registerUrl.equals(request.getServletPath());
+        return request.getServletPath().contains("/resources/") || indexPageUrl.equals(request.getServletPath()) || loginPageUrl.equals(request.getServletPath()) || registerUrl.equals(request.getServletPath());
     }
 
     @Override
