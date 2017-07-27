@@ -1,21 +1,19 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
-<div style="background: #f8f8f8; margin: 10px 0;">
-    <div style="padding: 100px 10px;">
-        <div style="display: inline-block; float: left">
-            <p>Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla</p>
-            <p>Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla</p>
-        </div>
-        <div style="border: 100px solid gray;display: inline-block; margin: 0 100px;">
-        </div>
+<div class="row-start-page-gray">
+    <div class="f-left">
+        <p>Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla</p>
+        <p>Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla</p>
+    </div>
+    <div style="border: 100px solid gray;margin: 0 100px;">
     </div>
 </div>
 <a href="#x" class="overlay" id="login_form"></a>
@@ -35,41 +33,37 @@
         <a class="close" href="#close"></a>
     </html:form>
 </div>
-<div style="margin: 10px 0;">
-    <div style="padding: 100px 10px;">
-        <div style="display: inline-block; float: left">
-            <p>Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla</p>
-            <p>Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla
-                Bla Bla Bla</p>
-        </div>
-        <div style="border: 100px solid gray;display: inline-block; margin: 0 100px;">
-        </div>
+<div class="row-start-page">
+    <div class="f-left">
+        <p>Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla</p>
+        <p>Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla</p>
     </div>
-    <div style="background: #f8f8f8; margin: 10px 0;">
-        <div style="padding: 100px 10px;">
-            <div style="display: inline-block; float: left">
-                <p>Bla Bla Bla
-                    Bla Bla Bla
-                    Bla Bla Bla
-                    Bla Bla Bla
-                    Bla Bla Bla</p>
-                <p>Bla Bla Bla
-                    Bla Bla Bla
-                    Bla Bla Bla
-                    Bla Bla Bla
-                    Bla Bla Bla
-                    Bla Bla Bla</p>
-            </div>
-            <div style="border: 100px solid gray;display: inline-block; margin: 0 100px;">
-            </div>
-        </div>
+    <div style="border: 100px solid gray; margin: 0 100px;">
+    </div>
+</div>
+<div class="row-start-page-gray">
+    <div class="f-left">
+        <p>Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla</p>
+        <p>Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla
+            Bla Bla Bla</p>
+    </div>
+    <div style="border: 100px solid gray; margin: 0 100px;">
     </div>
 </div>

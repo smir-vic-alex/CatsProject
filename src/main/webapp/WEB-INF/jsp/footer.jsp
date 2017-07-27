@@ -1,5 +1,5 @@
-<footer style="background: #7e7e7e; color: #dbdbdb; font-size: 11px; position: absolute; left: 0; bottom: 0; width: 100%;">
-    <div style="max-width: 1000px; margin: auto; padding: 10px 0; height: 90px;">
+<footer>
+    <div class="footer-container">
         <div style="float: left; width: 300px;">
             <h3 style="font: 14px 'Oswald', sans-serif; color: #fff; border-bottom: 1px solid #919191; margin: 0 0 10px 0;">
                 TWITTER FEED

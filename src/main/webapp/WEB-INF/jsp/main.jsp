@@ -7,8 +7,8 @@
 
 <body style="margin: 0;">
 
-<div style="border-top: 5px solid #7e7e7e;"></div>
-<div style="padding: 20px;">
+<div class="line"></div>
+<div class="top-menu-container">
     <div style="max-width: 1000px; margin: auto ">
         <jsp:include page="topMenuIndex.jsp"/>
     </div>
