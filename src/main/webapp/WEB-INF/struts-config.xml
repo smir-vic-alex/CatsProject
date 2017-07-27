@@ -39,25 +39,25 @@
                 name="RegisterActionForm"
                 scope="request"
                 parameter="unused">
-            <forward name="register" path="/WEB-INF/jsp/register.jsp"/>
+            <forward name="fail" path="/index.do" redirect="true"/>
             <forward name="success" path="/private/client/page/main.do" redirect="true"/>
         </action>
         <!--Привязка аккаунта соцсети к профилю-->
-        <action path="/private/client/addVKProfile"
-                type="actions.ClientAddVKProfileAction"
-                name="ClientAddVKProfileActionForm"
-                scope="request"
-                parameter="unused">
-            <forward name="success" path="WEB-INF/jsp/addVKProfile.jsp"/>
-        </action>
-        <!--Добавление группы для администрирования-->
-        <action path="/private/client/addVKGroup"
-                type="actions.ClientAddVKGroupAction"
-                name="ClientAddVKGroupActionForm"
-                scope="request"
-                parameter="unused">
-            <forward name="success" path="WEB-INF/jsp/addVKGroup.jsp"/>
-        </action>
+        <!--<action path="/private/client/addVKProfile"-->
+                <!--type="actions.ClientAddVKProfileAction"-->
+                <!--name="ClientAddVKProfileActionForm"-->
+                <!--scope="request"-->
+                <!--parameter="unused">-->
+            <!--<forward name="success" path="WEB-INF/jsp/addVKProfile.jsp"/>-->
+        <!--</action>-->
+        <!--&lt;!&ndash;Добавление группы для администрирования&ndash;&gt;-->
+        <!--<action path="/private/client/addVKGroup"-->
+                <!--type="actions.ClientAddVKGroupAction"-->
+                <!--name="ClientAddVKGroupActionForm"-->
+                <!--scope="request"-->
+                <!--parameter="unused">-->
+            <!--<forward name="success" path="WEB-INF/jsp/addVKGroup.jsp"/>-->
+        <!--</action>-->
         <!--Редактирование групп для администрирования-->
         <action path="/private/vklogin"
                 type="actions.VKRedirectAction">

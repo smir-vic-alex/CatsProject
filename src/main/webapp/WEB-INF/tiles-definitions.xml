@@ -8,6 +8,7 @@
 
 <tiles-definitions>
     <definition name="main" path="/WEB-INF/jsp/main.jsp">
+        <put name="topMenu" value=""/>
         <put name="data" value=""/>
     </definition>
 

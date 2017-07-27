@@ -108,3 +108,36 @@
     -o-border-radius: 2px;
     border-radius: 2px;
 }
+
+.aside-menu li {
+    font-weight: 300;
+    list-style-type: square;
+    border-top: 1px solid #e7e7e7;
+}
+
+.aside-menu li:first-child {
+    border: none;
+}
+
+.aside-menu li.active {
+    color: #29c5e6;
+}
+
+.aside-menu a {
+    color: #8f8f8f;
+}
+
+.top-menu li {
+    display: inline-block;
+    padding: 10px 30px;
+    margin: 0;
+}
+
+.top-menu li.active {
+    background: #29c5e6;
+    color: #fff;
+}
+
+.top-menu a {
+    color: #b2b2b2;
+}
