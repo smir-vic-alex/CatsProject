@@ -7,139 +7,124 @@
     <title>Название</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/style.css"/>
 </head>
-<%--<body>--%>
 
-    <%--<div id="wrapper" class="wrapper">--%>
-        <%--<jsp:include page="header.jsp"/>--%>
-        <%--<div>--%>
-            <%--<tiles:insert attribute="data"/>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-    <%--<jsp:include page="footer.jsp"/>--%>
-<%--</body>--%>
-
-<body>
-<div id="wrapper">
-    <jsp:include page="header.jsp"/>
-
-    <section>
-        <a href="#x" class="overlay" id="login_form"></a>
-        <div class="popup">
-            <html:form action="/login">
-                <h2>Вход</h2>
-                Введите ваш логин и пароль
-                <div>
-                    Логин
-                    <html:text property="login" title="login"/>
-                </div>
-                <div>
-                    Пароль
-                    <html:text property="password" title="password"/>
-                </div>
-                <html:submit value="Login"/>
-                <a class="close" href="#close"></a>
-            </html:form>
-        </div>
-        <%--<blockquote>--%>
-            <%--<p>--%>
-                <%--&ldquo;QUISQUE IN ENIM VELIT, AT DIGNISSIM EST.--%>
-                <%--NULLA UL CORPER, DOLOR AC PELLENTESQUE PLACERAT, JUSTO TELLUS GRAVIDA ERAT, VEL PORTTITOR LIBERO ERAT.&rdquo;--%>
-            <%--</p>--%>
-            <%--<cite>John Doe, Lorem Ipsum</cite>--%>
-        <%--</blockquote>--%>
-
-        <p class="p-style">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean non neque ac sem accumsan rhoncus ut ut turpis. In hac habitasse platea dictumst. Proin eget nisi erat, et feugiat arcu. Duis semper porttitor lectus, ac pharetra erat imperdiet nec. Morbi interdum felis nulla. Aenean eros orci, pellentesque sed egestas vitae, auctor aliquam nisi. Nulla nec libero eget sem rutrum iaculis. Quisque in enim velit, at dignissim est. Nulla ullamcorper, dolor ac pellentesque placerat, justo tellus gravida erat, vel porttitor libero erat condimentum metus. Donec sodales aliquam orci id suscipit. Proin sed risus sit amet massa ultrices laoreet quis a erat. Aliquam et metus id erat vulputate egestas. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-        <p class="p-style">Donec vel nisl nibh. Aenean quam tortor, tempus sit amet mattis dapibus, egestas tempor dui. Duis vestibulum imperdiet risus pretium pretium. Nunc vitae porta ligula. Vestibulum sit amet nulla quam. Aenean lacinia, ante vitae sodales sagittis, leo felis bibendum neque, mattis sagittis neque urna vel magna. Sed at sem vitae lorem blandit feugiat.</p>
-        <p class="p-style">Donec vel orci purus, ut ornare orci. Aenean rutrum pellentesque quam. Quisque gravida adipiscing augue, eget commodo augue egestas varius. Integer volutpat, tellus porta tincidunt sodales, lacus est tempus odio, fringilla blandit tortor lectus ut sem. Pellentesque nec sem lacus, sit amet consequat neque. Etiam varius urna quis arcu cursus in consectetur dui tincidunt. Quisque arcu orci, lacinia eget pretium vel, iaculis pellentesque nibh. Etiam cursus lacus eget neque viverra vestibulum. Aliquam erat volutpat. Duis pulvinar tellus ut urna facilisis mollis. Maecenas ac pharetra dui. Pellentesque neque ante, luctus eget congue eget, rhoncus vel mauris. Duis nisi magna, aliquet a convallis non, venenatis at nisl. Nunc at quam eu magna malesuada dignissim. Duis bibendum iaculis felis, eu venenatis risus sodales non. In ligula mi, faucibus eu tristique sed, vulputate rutrum dolor.</p>
-
-        <%--<figure>--%>
-            <%--<img src="images/sample.png" width="320" height="175" alt="">--%>
-        <%--</figure>--%>
-        <%--<figure>--%>
-            <%--<img src="images/sample.png" width="320" height="175" alt="">--%>
-        <%--</figure>--%>
-
-        <h2>OUR TEAM</h2>
-        <div class="team-row">
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>John Doe<span>ceo</span></figcaption>
-            </figure>
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Saundra Pittsley<span>team leader</span></figcaption>
-            </figure>
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Julio Simser<span>senior developer</span></figcaption>
-            </figure>
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Margery Venuti<span>senior developer</span></figcaption>
-            </figure>
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Fernando Tondrea<span>developer</span></figcaption>
-            </figure>
-        </div>
-        <div class="team-row">
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Ericka Nobriga<span>art director</span></figcaption>
-            </figure>
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Cody Rousselle<span>senior ui designer</span></figcaption>
-            </figure>
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Erik Wollman<span>senior ui designer</span></figcaption>
-            </figure>
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Dona Shoff<span>ux designer</span></figcaption>
-            </figure>
-            <figure>
-                <img src="images/sample.png" width="96" height="96" alt="">
-                <figcaption>Darryl Brunton<span>ui designer</span></figcaption>
-            </figure>
-        </div>
-    </section>
+<body style="margin: 0;">
+<div style="border-top: 5px solid #7e7e7e;"></div>
+<div style="padding: 20px;">
+    <div style="max-width: 1000px; margin: auto; ">
+        <div style="display: inline-block; padding: 0 10px; float: left;"><a href="/">LOGO</a></div>
+        <div style="display: inline-block; padding: 0 10px; float: right;"><a href="#login_form" id="login_pop"><button class="login" type="submit">Login</button></a></div>
+        <div style="display: inline-block; padding: 0 10px; float: right;"><a href="/">Registration</a></div>
+    </div>
 </div>
-<footer>
-    <div id="footer">
-        <div id="twitter">
-            <h3>TWITTER FEED</h3>
-            <time datetime="2012-10-23"><a href="#">23 oct</a></time>
-            <p>In ultricies pellentesque massa a porta. Aliquam ipsum enim, hendrerit ut porta nec, ullamcorper et nulla. In eget mi dui, sit amet scelerisque nunc. Aenean aug</p>
+<div style="background: #f8f8f8; margin: 10px 0;">
+    <div style="max-width: 1000px; margin: auto; padding: 100px;">
+        <div style="display: inline-block; float: left">
+            <p>Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla</p>
+            <p>Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla</p>
         </div>
-        <div id="sitemap">
-            <h3>SITEMAP</h3>
-            <div>
-                <a href="/home/">Home</a>
-                <a href="/about/">About</a>
-                <a href="/services/">Services</a>
+        <div style="border: 100px solid gray;display: inline-block; margin: 0 100px;">
+        </div>
+    </div>
+</div>
+<a href="#x" class="overlay" id="login_form"></a>
+<div class="popup">
+    <html:form action="/login">
+        <h2>Вход</h2>
+        Введите ваш логин и пароль
+        <div>
+            Логин
+            <html:text property="login" title="login"/>
+        </div>
+        <div>
+            Пароль
+            <html:text property="password" title="password"/>
+        </div>
+        <html:submit value="Login"/>
+        <a class="close" href="#close"></a>
+    </html:form>
+</div>
+<div style="margin: 10px 0;">
+    <div style="max-width: 1000px; margin: auto; padding: 100px;">
+        <div style="display: inline-block; float: left">
+            <p>Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla</p>
+            <p>Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla
+                Bla Bla Bla</p>
+        </div>
+        <div style="border: 100px solid gray;display: inline-block; margin: 0 100px;">
+        </div>
+    </div>
+    <div style="background: #f8f8f8; margin: 10px 0;">
+        <div style="max-width: 1000px; margin: auto; padding: 100px;">
+            <div style="display: inline-block; float: left">
+                <p>Bla Bla Bla
+                    Bla Bla Bla
+                    Bla Bla Bla
+                    Bla Bla Bla
+                    Bla Bla Bla</p>
+                <p>Bla Bla Bla
+                    Bla Bla Bla
+                    Bla Bla Bla
+                    Bla Bla Bla
+                    Bla Bla Bla
+                    Bla Bla Bla</p>
             </div>
-            <div>
-                <a href="/partners/">Partners</a>
-                <a href="/customers/">Support</a>
-                <a href="/contact/">Contact</a>
+            <div style="border: 100px solid gray;display: inline-block; margin: 0 100px;">
             </div>
         </div>
-        <div id="social">
-            <h3>SOCIAL NETWORKS</h3>
-            <a href="http://twitter.com/" class="social-icon twitter"></a>
-            <a href="http://facebook.com/" class="social-icon facebook"></a>
-            <a href="http://plus.google.com/" class="social-icon google-plus"></a>
-            <a href="http://vimeo.com/" class="social-icon-small vimeo"></a>
-            <a href="http://youtube.com/" class="social-icon-small youtube"></a>
-            <a href="http://flickr.com/" class="social-icon-small flickr"></a>
-            <a href="http://instagram.com/" class="social-icon-small instagram"></a>
-            <a href="/rss/" class="social-icon-small rss"></a>
+    </div>
+</div>
+<footer style="background: #7e7e7e; color: #dbdbdb; font-size: 11px;">
+    <div style="max-width: 1000px; margin: auto; padding: 10px 0; height: 90px;">
+        <div style="float: left; width: 300px;">
+            <h3 style="font: 14px 'Oswald', sans-serif; color: #fff; border-bottom: 1px solid #919191; margin: 0 0 10px 0;">
+                TWITTER FEED
+            </h3>
+            <p style="padding-right: 15px;">Bla Bla Bla Bla</p>
         </div>
-        <div id="footer-logo">
-            <a href="/"><img src="images/footer-logo.png" alt="Whitesquare logo"></a>
-            <p>Copyright &copy; 2012 Whitesquare. A <a href="http://pcklab.com">pcklab</a> creation </p>
+        <div style="width: 150px; float: left; margin-left: 20px; padding-right: 15px;">
+            <h3 style="    font: 14px 'Oswald', sans-serif; color: #fff; border-bottom: 1px solid #919191; margin: 0 0 10px 0;">
+                SITEMAP
+            </h3>
+            <div style="display: inline-block;">
+                <a style="display: block; text-decoration: none; font-size: 12px; margin-bottom: 5px; color: #dbdbdb;"
+                   href="/home/">Home</a>
+                <a style="display: block; text-decoration: none; font-size: 12px; margin-bottom: 5px; color: #dbdbdb;"
+                   href="/about/">About</a>
+                <a style="display: block; text-decoration: none; font-size: 12px; margin-bottom: 5px; color: #dbdbdb;"
+                   href="/services/">Services</a>
+            </div>
+            <div style="display: inline-block; margin-left: 40px;">
+                <a style="display: block; text-decoration: none; font-size: 12px; margin-bottom: 5px; color: #dbdbdb;"
+                   href="/home/">Home</a>
+                <a style="display: block; text-decoration: none; font-size: 12px; margin-bottom: 5px; color: #dbdbdb;"
+                   href="/about/">About</a>
+                <a style="display: block; text-decoration: none; font-size: 12px; margin-bottom: 5px; color: #dbdbdb;"
+                   href="/services/">Services</a>
+            </div>
+        </div>
+        <div style="float: right; margin-top: 20px; font-size: 10px; text-align: right;">
+            <a style="color: #dbdbdb;" href="/">LOGO</a>
+            <p style="margin: 5px 0;">
+                Copyright © 2012 Whitesquare. A pcklab creation
+            </p>
         </div>
     </div>
 </footer>
