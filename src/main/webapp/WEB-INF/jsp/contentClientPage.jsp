@@ -1,12 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <aside class="aside-container">
     <nav>
         <ul class="aside-menu">
-            <li class="active">LOREM IPSUM</li>
-            <li><a style="text-decoration: none;" href="/donec/">DONEC TINCIDUNT LAOREET</a></li>
-            <li><a style="text-decoration: none;" href="/vestibulum/">VESTIBULUM ELIT</a></li>
-            <li><a style="text-decoration: none;" href="/etiam/">ETIAM PHARETRA</a></li>
-            <li><a style="text-decoration: none;" href="/phasellus/">PHASELLUS PLACERAT</a></li>
-            <li><a style="text-decoration: none;" href="/cras/">CRAS ET NISI VITAE ODIO</a></li>
+            <li class="active">Главная</li>
+            <li><a style="text-decoration: none;" href="/private/client/addVKProfile.do">Добавить профиль VK</a></li>
+            <li><a style="text-decoration: none;" href="/vestibulum/">Добавить группу</a></li>
+            <li><a style="text-decoration: none;" href="/etiam/">Разместить пост</a></li>
+            <li><a style="text-decoration: none;" href="/cras/">Настройки</a></li>
         </ul>
     </nav>
 </aside>
