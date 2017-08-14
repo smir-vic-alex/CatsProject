@@ -18,10 +18,11 @@ public class VKApiUserSetting extends VKApiSetting {
 
     @Override
     public void refreshPropertiesByCustomConfig() {
-        applicationAuthorizeConnectionUrl = getProperty("settings.vk.VKApiSetting.user.application.authorize.connection.url");
-        applicationDisplay = getProperty("settings.vk.VKApiSetting.user.application.display");
-        responseType = getProperty("settings.vk.VKApiSetting.user.response.type");
-        scope = getProperty("settings.vk.VKApiSetting.user.scope");
+        super.refreshPropertiesByCustomConfig();
+        applicationAuthorizeConnectionUrl = getProperty("settings.networks.vk.VKApiSetting.user.application.authorize.connection.url");
+        applicationDisplay = getProperty("settings.networks.vk.VKApiSetting.user.application.display");
+        responseType = getProperty("settings.networks.vk.VKApiSetting.user.response.type");
+        scope = getProperty("settings.networks.vk.VKApiSetting.user.scope");
         authUrl = String.format(applicationAuthorizeConnectionUrl, getApplicationId(),
                 applicationDisplay, getApplicationRedirectUri(),
                 responseType, scope, getVersion());

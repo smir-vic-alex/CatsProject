@@ -48,7 +48,7 @@
                 name="ClientAddVKProfileActionForm"
                 scope="request"
                 parameter="unused">
-            <forward name="success" path="WEB-INF/jsp/addVKProfile.jsp"/>
+            <forward name="error" path="/private/client/page/main.do" redirect="true"/>
         </action>
         <!--&lt;!&ndash;Добавление группы для администрирования&ndash;&gt;-->
         <!--<action path="/private/client/addVKGroup"-->

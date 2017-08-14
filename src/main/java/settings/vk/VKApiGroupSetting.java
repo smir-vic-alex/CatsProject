@@ -19,14 +19,15 @@ public class VKApiGroupSetting extends VKApiSetting {
 
     @Override
     public void refreshPropertiesByCustomConfig() {
-        applicationAuthorizeConnectionUrl = getProperty("settings.vk.VKApiSetting.group.application.authorize.connection.url");
-        applicationDisplay = getProperty("settings.vk.VKApiSetting.group.application.display");
-        responseType = getProperty("settings.vk.VKApiSetting.group.response.type");
-        scope = getProperty("settings.vk.VKApiSetting.group.scope");
+        super.refreshPropertiesByCustomConfig();
+        applicationAuthorizeConnectionUrl = getProperty("settings.networks.vk.VKApiSetting.group.application.authorize.connection.url");
+        applicationDisplay = getProperty("settings.networks.vk.VKApiSetting.group.application.display");
+        responseType = getProperty("settings.networks.vk.VKApiSetting.group.response.type");
+        scope = getProperty("settings.networks.vk.VKApiSetting.group.scope");
         //TODO добавить groupIds
-        authUrl = String.format(applicationAuthorizeConnectionUrl, getApplicationId(),
-                applicationDisplay, getApplicationRedirectUri(),
-                responseType, scope, getVersion());
+//        authUrl = String.format(applicationAuthorizeConnectionUrl, getApplicationId(),
+//                applicationDisplay, getApplicationRedirectUri(),
+//                responseType, scope, getVersion());
     }
 
     public String getAuthUrl() {

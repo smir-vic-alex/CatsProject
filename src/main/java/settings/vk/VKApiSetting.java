@@ -19,10 +19,10 @@ public class VKApiSetting extends Setting {
 
     @Override
     public void refreshPropertiesByCustomConfig() {
-        applicationSecretKey = getProperty("settings.vk.VKApiSetting.application.secret.key");
-        applicationId = Integer.parseInt(getProperty("settings.vk.VKApiSetting.application.id"));
-        applicationRedirectUri = getProperty("settings.vk.VKApiSetting.application.redirect.uri");
-        version = getProperty("settings.vk.VKApiSetting.application.version");
+        applicationSecretKey = getProperty("settings.networks.vk.VKApiSetting.application.secret.key");
+        applicationId = Integer.parseInt(getProperty("settings.networks.vk.VKApiSetting.application.id"));
+        applicationRedirectUri = getProperty("settings.networks.vk.VKApiSetting.application.redirect.uri");
+        version = getProperty("settings.networks.vk.VKApiSetting.application.version");
     }
 
     public String getApplicationSecretKey() {

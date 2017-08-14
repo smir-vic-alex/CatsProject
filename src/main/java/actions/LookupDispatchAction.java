@@ -50,9 +50,6 @@ public abstract class LookupDispatchAction extends DispatchAction {
         if (requestParam != null)
             return requestParam;
 
-        // для мобильной версии в связи с тем, что мы используем submit, то название операций заложено в имени кнопки submit
-        // пример название параметра будет operation.button.filter где button.filter название операции
-
         return null;
     }
 
