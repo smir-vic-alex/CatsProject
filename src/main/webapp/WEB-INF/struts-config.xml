@@ -69,7 +69,7 @@
                 name="CodeVKActionForm"
                 scope="request"
                 parameter="unused">
-            <forward name="success" path="/private/client/page/main.do"/>
+            <forward name="success" path="/private/client/page/main.do" redirect="true"/>
         </action>
 
     </action-mappings>
