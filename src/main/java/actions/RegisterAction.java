@@ -1,9 +1,9 @@
 package actions;
 
 import actionForms.RegisterActionForm;
-import operations.AuthService;
-import operations.Login;
-import operations.Password;
+import hibernate.services.AuthService;
+import entities.Login;
+import entities.Password;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;

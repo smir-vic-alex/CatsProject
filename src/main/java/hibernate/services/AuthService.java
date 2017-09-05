@@ -1,6 +1,8 @@
-package operations;
+package hibernate.services;
 
 import hibernate.BusinessService;
+import entities.Login;
+import entities.Password;
 
 /**
  * Created by SBT-Smirnov-VA on 20.07.2017.

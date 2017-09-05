@@ -1,12 +1,11 @@
 package actions;
 
-import accesses.EncryptUtils;
 import actionForms.LoginActionForm;
 import exeptions.access.LoginException;
 import exeptions.access.LoginNotFoundException;
-import operations.AuthService;
-import operations.Login;
-import operations.Password;
+import hibernate.services.AuthService;
+import entities.Login;
+import entities.Password;
 import org.apache.struts.action.*;
 import utils.WebContext;
 
