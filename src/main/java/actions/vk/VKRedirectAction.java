@@ -1,6 +1,5 @@
-package actions;
+package actions.vk;
 
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -13,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by SBT-Smirnov-VA on 21.07.2017.
  */
-public class VKRedirectAction extends Action {
+public class VKRedirectAction extends VKAction {
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         ActionForward forward = new ActionForward();

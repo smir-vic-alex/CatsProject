@@ -19,6 +19,7 @@ public class SettingFactory {
         settings.put(VKApiSetting.class, new VKApiSetting("/networks/vk/vk-application-config.properties"));
         settings.put(VKApiUserSetting.class, new VKApiUserSetting("/networks/vk/vk-application-config.properties"));
         settings.put(VKApiGroupSetting.class, new VKApiGroupSetting("/networks/vk/vk-application-config.properties"));
+        settings.put(ApplicationGlobalSetting.class, new ApplicationGlobalSetting("/application.properties"));
     }
 
     public static <T extends Setting> T getSetting(Class<T> configKey) {
