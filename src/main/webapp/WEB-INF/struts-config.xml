@@ -14,6 +14,10 @@
         <form-bean name="CodeVKActionForm" type="actionForms.CodeVKActionForm"/>
     </form-beans>
 
+    <global-exceptions>
+        <exception key="global.exception" type="java.lang.Exception" path="/WEB-INF/jsp/exception.jsp"/>
+    </global-exceptions>
+
     <action-mappings>
         <action path="/index"
                 forward="/WEB-INF/jsp/index.jsp"/>
