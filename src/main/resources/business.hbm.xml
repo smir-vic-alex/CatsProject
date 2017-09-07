@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="entities.Login" table="LOGINS">
+        <id  name="id" column="ID" type="java.lang.Long">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="optimizer">none</param>
+                <param name="sequence_name">logins_seq</param>
+            </generator>
+        </id>
+        <property name="login" column="LOGIN" type="java.lang.String"/>
+    </class>
+
+    <class name="entities.Password" table="PASSWORDS">
+        <id  name="id" column="ID" type="java.lang.Long">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="optimizer">none</param>
+                <param name="sequence_name">passwords_seq</param>
+            </generator>
+        </id>
+        <property name="hash" column="HASH" type="java.lang.String"/>
+    </class>
+
+    <class name="entities.Network" table="NETWORKS">
+        <id  name="id" column="ID" type="java.lang.Long">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="optimizer">none</param>
+                <param name="sequence_name">networks_id_seq</param>
+            </generator>
+        </id>
+        <property name="vkAccessToken" column="VK_ACCESS_TOKEN" type="java.lang.String"/>
+        <property name="type" column="TYPE" type="java.lang.String"/>
+    </class>
+
+    <class name="entities.Operation" table="OPERATIONS">
+        <id  name="id" column="ID" type="java.lang.Long">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="optimizer">none</param>
+                <param name="sequence_name">operations_seq</param>
+            </generator>
+        </id>
+        <property name="type" column="TYPE" type="java.lang.String"/>
+    </class>
+
+    <class name="entities.User" table="USERS">
+        <id  name="id" column="ID" type="java.lang.Long">
+            <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
+                <param name="optimizer">none</param>
+                <param name="sequence_name">users_id_seq</param>
+            </generator>
+        </id>
+        <list name="network" table="NETWORKS" lazy="false" cascade="all-delete-orphan">
+            <key column="USER_ID" not-null="true"/>
+            <list-index column="LIST_INDEX"/>
+            <one-to-many class="entities.Network"/>
+        </list>
+        <list name="operation" table="OPERATIONS" lazy="false" cascade="all-delete-orphan">
+            <key column="USER_ID" not-null="true"/>
+            <list-index column="LIST_INDEX"/>
+            <one-to-many class="entities.Operation"/>
+        </list>
+        <property name="name" column="NAME" type="java.lang.String"/>
+        <property name="surName" column="SUR_NAME" type="java.lang.String"/>
+        <property name="patrName" column="PATR_NAME" type="java.lang.String"/>
+        <property name="email" column="EMAIL" type="java.lang.String"/>
+
+        <many-to-one name="password" column="PASSWORD_ID" class="entities.Password" not-null="true" fetch="join" lazy="false"/>
+        <many-to-one name="login" column="LOGIN_ID" class="entities.Login" not-null="true" fetch="join" lazy="false"/>
+    </class>
+</hibernate-mapping>
