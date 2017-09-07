@@ -7,7 +7,6 @@ public class Network {
 
     private Long id;
     private String type;
-    private String vkAccessToken;
 
     public Long getId() {
         return id;
@@ -25,11 +24,4 @@ public class Network {
         this.type = type;
     }
 
-    public String getVkAccessToken() {
-        return vkAccessToken;
-    }
-
-    public void setVkAccessToken(String vkAccessToken) {
-        this.vkAccessToken = vkAccessToken;
-    }
 }
