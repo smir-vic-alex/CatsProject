@@ -75,4 +75,14 @@
         <many-to-one name="password" column="PASSWORD_ID" class="entities.Password" not-null="true" fetch="join" lazy="false"/>
         <many-to-one name="login" column="LOGIN_ID" class="entities.Login" not-null="true" fetch="join" lazy="false"/>
     </class>
+
+    <!--ПОСТРОИТЬ ПЛАНЫ ЗАПРОСОВ!-->
+    <query name="entities.Login.get.login.by.login">
+        select login from entities.Login as login where login.login= :login
+    </query>
+
+    <query name="entities.User.get.user.by.login.id">
+        select user from entities.User as user where user.login.id = :loginId
+    </query>
+
 </hibernate-mapping>
