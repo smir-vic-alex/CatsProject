@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by SBT-Smirnov-VA on 20.07.2017.
  */
-public class ClientMainPageAction extends Action {
+public class ClientMainPageAction extends LookupDispatchAction {
 
     @Override
-    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         return mapping.findForward("success");
     }
 }

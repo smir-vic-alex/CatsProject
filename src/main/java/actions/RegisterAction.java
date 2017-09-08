@@ -3,7 +3,6 @@ package actions;
 import accesses.EncryptUtils;
 import actionForms.RegisterActionForm;
 import entities.User;
-import hibernate.HibernateAction;
 import hibernate.HibernateExecutor;
 import hibernate.services.AuthService;
 import entities.Login;
@@ -12,6 +11,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import utils.StringUtils;
+import utils.WebContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,12 +27,13 @@ public class RegisterAction extends LookupDispatchAction {
         RegisterActionForm registerActionForm = (RegisterActionForm) form;
 
         if (!StringUtils.isNotEmpty(registerActionForm.getLogin(), registerActionForm.getPassword())){
-            return mapping.findForward("register");
+            return mapping.findForward("fail");
         }
 
-        if (authService.findByLogin(registerActionForm.getLogin()) == null){
-            authService.saveOrUpdate(registerActionForm.getLogin());
-            authService.saveOrUpdate(registerActionForm.getPassword());
+        if (StringUtils.isNotEmpty(registerActionForm.getLogin()) && authService.findByLogin(registerActionForm.getLogin()) == null){
+            User user = createNewUser(registerActionForm.getLogin(), registerActionForm.getPassword());
+            WebContext.getCurrentRequest().getSession(false).setAttribute("login", true);
+            WebContext.getCurrentRequest().getSession(false).setAttribute("user", user);
         }
         return mapping.findForward("success");
     }
@@ -44,16 +45,19 @@ public class RegisterAction extends LookupDispatchAction {
                 {
                     Login login = new Login();
                     login.setLogin(lgn);
+                    session.saveOrUpdate(login);
 
                     Password password = new Password();
                     password.setHash(EncryptUtils.code(passwd));
+                    session.saveOrUpdate(password);
 
                     User newUser = new User();
                     newUser.setLogin(login);
                     newUser.setPassword(password);
 
                     session.saveOrUpdate(newUser);
-                    return null;
+
+                    return newUser;
                 }
             );
         } catch (Exception e) {
