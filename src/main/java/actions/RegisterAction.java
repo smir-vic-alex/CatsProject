@@ -1,6 +1,10 @@
 package actions;
 
+import accesses.EncryptUtils;
 import actionForms.RegisterActionForm;
+import entities.User;
+import hibernate.HibernateAction;
+import hibernate.HibernateExecutor;
 import hibernate.services.AuthService;
 import entities.Login;
 import entities.Password;
@@ -27,9 +31,33 @@ public class RegisterAction extends LookupDispatchAction {
         }
 
         if (authService.findByLogin(registerActionForm.getLogin()) == null){
-            authService.saveOrUpdate(new Login());
-            authService.saveOrUpdate(new Password());
+            authService.saveOrUpdate(registerActionForm.getLogin());
+            authService.saveOrUpdate(registerActionForm.getPassword());
         }
         return mapping.findForward("success");
+    }
+
+    private User createNewUser(final String lgn, final String passwd){
+
+        try {
+            return new HibernateExecutor<User>().execute((session) ->
+                {
+                    Login login = new Login();
+                    login.setLogin(lgn);
+
+                    Password password = new Password();
+                    password.setHash(EncryptUtils.code(passwd));
+
+                    User newUser = new User();
+                    newUser.setLogin(login);
+                    newUser.setPassword(password);
+
+                    session.saveOrUpdate(newUser);
+                    return null;
+                }
+            );
+        } catch (Exception e) {
+            throw e;
+        }
     }
 }
