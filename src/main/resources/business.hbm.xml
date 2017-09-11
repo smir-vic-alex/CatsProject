@@ -57,23 +57,15 @@
                 <param name="sequence_name">users_id_seq</param>
             </generator>
         </id>
-        <list name="network" table="NETWORKS" lazy="false" cascade="all-delete-orphan">
+        <set name="network" table="NETWORKS" lazy="false" cascade="all-delete-orphan">
             <key column="USER_ID" not-null="true"/>
-            <list-index column="LIST_INDEX"/>
             <one-to-many class="entities.Network"/>
-        </list>
-        <list name="operation" table="OPERATIONS" lazy="false" cascade="all-delete-orphan">
-            <key column="USER_ID" not-null="true"/>
-            <list-index column="LIST_INDEX"/>
-            <one-to-many class="entities.Operation"/>
-        </list>
+        </set>
         <property name="name" column="NAME" type="java.lang.String"/>
         <property name="surName" column="SUR_NAME" type="java.lang.String"/>
         <property name="patrName" column="PATR_NAME" type="java.lang.String"/>
         <property name="email" column="EMAIL" type="java.lang.String"/>
-
-        <many-to-one name="password" column="PASSWORD_ID" class="entities.Password" not-null="true" fetch="join" lazy="false"/>
-        <many-to-one name="login" column="LOGIN_ID" class="entities.Login" not-null="true" fetch="join" lazy="false"/>
+        <property name="loginId" column="LOGIN_ID" type="java.lang.Long"/>
     </class>
 
     <!--ПОСТРОИТЬ ПЛАНЫ ЗАПРОСОВ!-->
@@ -82,7 +74,13 @@
     </query>
 
     <query name="entities.User.get.user.by.login.id">
-        select user from entities.User as user where user.login.id = :loginId
+        select user from entities.User as user where user.loginId = :loginId
     </query>
 
+    <sql-query name="get.user.accesses">
+        <return alias="operation" class="entities.Operation"/>
+        <![CDATA[
+            select {operation.*} from OPERATIONS operation where operation.id in (select uo.OPERATION_ID from USERS_OPERATIONS uo where uo.USER_ID = :userId)
+        ]]>
+    </sql-query>
 </hibernate-mapping>

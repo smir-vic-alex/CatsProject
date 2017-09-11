@@ -13,9 +13,7 @@ public class User
     private String patrName;
     private String email;
     private List<Network> network;
-    private Password password;
-    private Login login;
-    private List<Operation> operation;
+    private Long loginId;
 
     public Long getId() {
         return id;
@@ -65,27 +63,11 @@ public class User
         this.network = network;
     }
 
-    public Password getPassword() {
-        return password;
+    public Long getLoginId() {
+        return loginId;
     }
 
-    public void setPassword(Password password) {
-        this.password = password;
-    }
-
-    public Login getLogin() {
-        return login;
-    }
-
-    public void setLogin(Login login) {
-        this.login = login;
-    }
-
-    public List<Operation> getOperation() {
-        return operation;
-    }
-
-    public void setOperation(List<Operation> operation) {
-        this.operation = operation;
+    public void setLoginId(Long loginId) {
+        this.loginId = loginId;
     }
 }
