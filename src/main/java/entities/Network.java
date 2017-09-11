@@ -7,6 +7,7 @@ public class Network {
 
     private Long id;
     private String type;
+    private Long userId;
 
     public Long getId() {
         return id;
@@ -24,4 +25,11 @@ public class Network {
         this.type = type;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

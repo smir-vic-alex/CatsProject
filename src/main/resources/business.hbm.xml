@@ -22,6 +22,7 @@
             </generator>
         </id>
         <property name="hash" column="HASH" type="java.lang.String"/>
+        <property name="loginId" column="LOGIN_ID" type="java.lang.Long"/>
     </class>
 
     <class name="entities.Network" table="NETWORKS">
@@ -34,13 +35,13 @@
 
         <discriminator formula="TYPE" type="string" not-null="true"/>
         <property name="type" type="string" column="TYPE" not-null="true"/>
-
+        <property name="userId" type="java.lang.Long" column="USER_ID" not-null="true"/>
         <subclass name="entities.VKNetwork" discriminator-value="VK">
             <property name="vkAccessToken" type="java.lang.String" column="VK_ACCESS_TOKEN" not-null="false"/>
         </subclass>
     </class>
 
-    <class name="entities.Operation" table="OPERATIONS">
+    <class name="entities.Access" table="ACCESSES">
         <id  name="id" column="ID" type="java.lang.Long">
             <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
                 <param name="optimizer">none</param>
@@ -57,14 +58,6 @@
                 <param name="sequence_name">users_id_seq</param>
             </generator>
         </id>
-        <set name="network" table="NETWORKS" lazy="false" cascade="all-delete-orphan">
-            <key column="USER_ID" not-null="true"/>
-            <one-to-many class="entities.Network"/>
-        </set>
-        <property name="name" column="NAME" type="java.lang.String"/>
-        <property name="surName" column="SUR_NAME" type="java.lang.String"/>
-        <property name="patrName" column="PATR_NAME" type="java.lang.String"/>
-        <property name="email" column="EMAIL" type="java.lang.String"/>
         <property name="loginId" column="LOGIN_ID" type="java.lang.Long"/>
     </class>
 
@@ -78,7 +71,7 @@
     </query>
 
     <sql-query name="get.user.accesses">
-        <return alias="operation" class="entities.Operation"/>
+        <return alias="operation" class="entities.Access"/>
         <![CDATA[
             select {operation.*} from OPERATIONS operation where operation.id in (select uo.OPERATION_ID from USERS_OPERATIONS uo where uo.USER_ID = :userId)
         ]]>

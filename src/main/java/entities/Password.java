@@ -7,6 +7,7 @@ public class Password {
 
     private Long id;
     private String hash;
+    private Long loginId;
 
     public String getHash() {
         return hash;
@@ -22,5 +23,13 @@ public class Password {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(Long loginId) {
+        this.loginId = loginId;
     }
 }

@@ -4,7 +4,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="property.Property" table="PROPERTIES">
+    <class name="property.Property" table="SETTINGS">
         <id  name="id" column="ID" type="java.lang.Long">
             <generator class="org.hibernate.id.enhanced.SequenceStyleGenerator">
                 <param name="optimizer">none</param>
