@@ -70,6 +70,10 @@
         select user from entities.User as user where user.loginId = :loginId
     </query>
 
+    <query name="entities.Password.get.password.by.login.id">
+        select password from entities.Password as password where password.loginId =: loginId
+    </query>
+
     <sql-query name="get.user.accesses">
         <return alias="operation" class="entities.Access"/>
         <![CDATA[

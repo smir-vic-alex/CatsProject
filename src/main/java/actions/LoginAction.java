@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginAction extends OperationActionBase {
 
-    private static final AuthService service = new AuthService();
+    private static final AuthService authService = new AuthService();
     private static final UserService userService = new UserService();
 
     @Override
@@ -30,8 +30,8 @@ public class LoginAction extends OperationActionBase {
         LoginActionForm loginActionForm = (LoginActionForm) form;
 
         Login login = getLogin(loginActionForm.getLogin());
+        checkPassword(login.getId(), loginActionForm.getPassword());
         User user = userService.getUserByLogin(login);
-        checkPassword(user.getPassword(), loginActionForm.getPassword());
         sessionUpdate(user);
 
         return mapping.findForward("clientPage");
@@ -42,7 +42,10 @@ public class LoginAction extends OperationActionBase {
         WebContext.getCurrentRequest().getSession(false).setAttribute("user", user);
     }
 
-    private void checkPassword(Password password, String inputPassword) throws LoginException {
+    private void checkPassword(Long loginId, String inputPassword) throws LoginException {
+
+        Password password = authService.findPasswordByLoginId(loginId);
+
         if (!password.getHash().equals(EncryptUtils.code(inputPassword))) {
             throwLoginException();
         }
@@ -53,7 +56,7 @@ public class LoginAction extends OperationActionBase {
             throwLoginException();
         }
 
-        Login login = service.findByLogin(loginName);
+        Login login = authService.findByLogin(loginName);
         if (login == null) {
             throwLoginException();
         }

@@ -1,5 +1,6 @@
 package hibernate.services;
 
+import entities.Password;
 import hibernate.BusinessService;
 import entities.Login;
 import hibernate.HibernateExecutor;
@@ -24,5 +25,18 @@ public class AuthService extends BusinessService {
                     }
                 }
         );
+    }
+
+    public Password findPasswordByLoginId(final Long loginId){
+        return new HibernateExecutor<Password>().execute((session)->{
+           try {
+               Query<Password> query = session.createNamedQuery("entities.Password.get.password.by.login.id", Password.class);
+               query.setParameter("loginId", loginId);
+               return query.getSingleResult();
+           }catch (Exception e)
+           {
+               return null;
+           }
+        });
     }
 }

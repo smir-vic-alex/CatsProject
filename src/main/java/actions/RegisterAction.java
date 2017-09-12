@@ -49,11 +49,11 @@ public class RegisterAction extends LookupDispatchAction {
 
                     Password password = new Password();
                     password.setHash(EncryptUtils.code(passwd));
+                    password.setLoginId(login.getId());
                     session.saveOrUpdate(password);
 
                     User newUser = new User();
-                    newUser.setLogin(login);
-                    newUser.setPassword(password);
+                    newUser.setLoginId(login.getId());
 
                     session.saveOrUpdate(newUser);
 
