@@ -37,7 +37,7 @@
         <property name="type" type="string" column="TYPE" not-null="true"/>
         <property name="userId" type="java.lang.Long" column="USER_ID" not-null="true"/>
         <subclass name="entities.VKNetwork" discriminator-value="VK">
-            <property name="vkAccessToken" type="java.lang.String" column="VK_ACCESS_TOKEN" not-null="false"/>
+            <property name="vkAccessCode" type="java.lang.String" column="VK_ACCESS_TOKEN" not-null="false"/>
         </subclass>
     </class>
 
@@ -71,7 +71,7 @@
     </query>
 
     <query name="entities.Password.get.password.by.login.id">
-        select password from entities.Password as password where password.loginId =: loginId
+        select password from entities.Password as password where password.loginId = :loginId
     </query>
 
     <sql-query name="get.user.accesses">

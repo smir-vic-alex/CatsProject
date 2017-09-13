@@ -20,7 +20,7 @@ public class UserService extends BusinessService<User> {
             try {
                 Query<User> query = session.createNamedQuery(QUERY_NAME_USER_BY_LOGIN_ID, User.class);
                 query.setParameter("loginId", login.getId());
-                return null;
+                return query.getSingleResult();
             }
             catch (NoResultException e) {
                 return null;

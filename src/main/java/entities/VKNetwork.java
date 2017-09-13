@@ -5,13 +5,13 @@ package entities;
  */
 public class VKNetwork extends Network
 {
-    private String vkAccessToken;
+    private String vkAccessCode;
 
-    public String getVkAccessToken() {
-        return vkAccessToken;
+    public String getVkAccessCode() {
+        return vkAccessCode;
     }
 
-    public void setVkAccessToken(String vkAccessToken) {
-        this.vkAccessToken = vkAccessToken;
+    public void setVkAccessCode(String vkAccessToken) {
+        this.vkAccessCode = vkAccessToken;
     }
 }
