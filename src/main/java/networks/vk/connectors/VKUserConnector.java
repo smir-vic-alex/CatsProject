@@ -4,11 +4,14 @@ import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.UserAuthResponse;
+import entities.User;
+import entities.VKNetwork;
+import hibernate.services.NetworksService;
 import settings.vk.VKApiSetting;
 import settings.SettingFactory;
 import exeptions.connectors.ConnectorException;
-import settings.vk.VKApiUserSetting;
 import networks.vk.clients.VKUser;
+import utils.WebContext;
 
 import java.io.PrintStream;
 import java.util.Scanner;
@@ -19,17 +22,15 @@ import java.util.Scanner;
  */
 public class VKUserConnector implements VKConnector<VKUser> {
 
-    private PrintStream out = System.out;
-    private Scanner in = new Scanner(System.in);
+    private static final NetworksService networkService = new NetworksService();
 
     public VKUser login() throws ConnectorException {
 
-        out.println(SettingFactory.getSetting(VKApiUserSetting.class).getAuthUrl());
-        String code = in.nextLine();
-
         VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
         VKApiSetting apiConfig = SettingFactory.getSetting(VKApiSetting.class);
+        User user = (User) WebContext.getCurrentRequest().getSession().getAttribute("user");
 
+        String code = ((VKNetwork)networkService.getNetworkByUserId(user.getId())).getVkAccessCode();
         UserAuthResponse authResponse;
         try {
             authResponse = vk.oauth()

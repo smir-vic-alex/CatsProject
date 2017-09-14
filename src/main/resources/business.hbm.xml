@@ -74,6 +74,10 @@
         select password from entities.Password as password where password.loginId = :loginId
     </query>
 
+    <query name="entities.get.network.by.user.id">
+        select network from entities.Network as network where network.userId = :userId
+    </query>
+
     <sql-query name="get.user.accesses">
         <return alias="operation" class="entities.Access"/>
         <![CDATA[
