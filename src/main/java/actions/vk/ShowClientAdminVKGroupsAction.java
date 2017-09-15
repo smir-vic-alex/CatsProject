@@ -1,9 +1,6 @@
 package actions.vk;
 
 import actions.LookupDispatchAction;
-import networks.vk.clients.VKUser;
-import networks.vk.connectors.VKConnectorFactory;
-import networks.vk.connectors.VKConnectorType;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -18,7 +15,6 @@ public class ShowClientAdminVKGroupsAction extends LookupDispatchAction {
 
     @Override
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        VKUser vkUser = (VKUser) VKConnectorFactory.getConnector(VKConnectorType.USER).login();
 
 
         return mapping.findForward("success");

@@ -23,10 +23,9 @@ public class VKGroupConnection implements VKConnector<VKGroup> {
     private Scanner in = new Scanner(System.in);
 
     @Override
-    public VKGroup login() throws ConnectorException {
+    public VKGroup auth(String code) throws ConnectorException {
 
         out.println(SettingFactory.getSetting(VKApiGroupSetting.class).getAuthUrl());
-        String code = in.nextLine();
 
         VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
         VKApiSetting apiConfig = SettingFactory.getSetting(VKApiSetting.class);

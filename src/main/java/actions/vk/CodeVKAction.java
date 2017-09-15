@@ -1,8 +1,12 @@
 package actions.vk;
 
 import actionForms.CodeVKActionForm;
+import com.vk.api.sdk.objects.UserAuthResponse;
 import entities.User;
 import hibernate.services.NetworksService;
+import networks.vk.clients.VKUser;
+import networks.vk.connectors.VKConnectorFactory;
+import networks.vk.connectors.VKConnectorType;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -19,10 +23,12 @@ public class CodeVKAction extends VKAction {
     private static final NetworksService networkService = new NetworksService();
 
     @Override
-    public ActionForward start (ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ActionForward start (ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception
+    {
         CodeVKActionForm codeVKActionForm = (CodeVKActionForm) form;
         User user = (User) WebContext.getCurrentRequest().getSession(false).getAttribute("user");
-        networkService.saveOrUpdateVkNetworkCode( user.getId(), codeVKActionForm.getCode());
+        UserAuthResponse authResponse = (UserAuthResponse) VKConnectorFactory.getConnector(VKConnectorType.USER).auth(codeVKActionForm.getCode());
+        networkService.saveOrUpdateVkNetworkCode( user.getId(), authResponse.getAccessToken());
 
         return mapping.findForward("success");
     }

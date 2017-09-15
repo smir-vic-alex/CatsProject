@@ -10,7 +10,7 @@ import networks.vk.clients.VKService;
 public class VKServiceConnector implements VKConnector<VKService> {
 
     @Override
-    public VKService login() throws ConnectorException {
+    public VKService auth(String code) throws ConnectorException {
         return new VKService();
     }
 }

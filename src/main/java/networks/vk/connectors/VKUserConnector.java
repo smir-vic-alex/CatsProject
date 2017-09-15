@@ -20,17 +20,12 @@ import java.util.Scanner;
  * Коннектор для логина пользователем
  * Created by Smirnov Victor on 09.04.17.
  */
-public class VKUserConnector implements VKConnector<VKUser> {
+public class VKUserConnector implements VKConnector<UserAuthResponse> {
 
-    private static final NetworksService networkService = new NetworksService();
-
-    public VKUser login() throws ConnectorException {
+    public UserAuthResponse auth(String code) throws ConnectorException {
 
         VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
         VKApiSetting apiConfig = SettingFactory.getSetting(VKApiSetting.class);
-        User user = (User) WebContext.getCurrentRequest().getSession().getAttribute("user");
-
-        String code = ((VKNetwork)networkService.getNetworkByUserId(user.getId())).getVkAccessCode();
         UserAuthResponse authResponse;
         try {
             authResponse = vk.oauth()
@@ -44,7 +39,7 @@ public class VKUserConnector implements VKConnector<VKUser> {
         if (authResponse == null)
             throw new ConnectorException();
 
-        return new VKUser(new UserActor(authResponse.getUserId(), authResponse.getAccessToken()));
+        return authResponse;
     }
 
 }
