@@ -2,6 +2,8 @@ package networks.vk.connectors;
 
 import com.vk.api.sdk.client.VkApiClient;
 import com.vk.api.sdk.client.actors.UserActor;
+import com.vk.api.sdk.exceptions.ApiException;
+import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.UserAuthResponse;
 import entities.User;
@@ -40,6 +42,18 @@ public class VKUserConnector implements VKConnector<UserAuthResponse> {
             throw new ConnectorException();
 
         return authResponse;
+    }
+
+    public void getGroups(String accessToken){
+        VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
+        UserActor userActor = new UserActor(0, accessToken);
+        try {
+            vk.groups().get(userActor).execute();
+        } catch (ApiException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
     }
 
 }
