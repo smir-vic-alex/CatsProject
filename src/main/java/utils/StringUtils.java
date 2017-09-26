@@ -1,5 +1,8 @@
 package utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Виктор on 24.07.2017.
  */
@@ -23,5 +26,13 @@ public class StringUtils {
             return true;
         }
         return false;
+    }
+
+    public static List<String> integerListToListOfStrings(List<Integer> list){
+        List<String> newList = new ArrayList<String>(list.size());
+        for (Integer myInt : list) {
+            newList.add(String.valueOf(myInt));
+        }
+        return newList;
     }
 }

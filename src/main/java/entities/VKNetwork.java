@@ -6,6 +6,7 @@ package entities;
 public class VKNetwork extends Network
 {
     private String vkAccessCode;
+    private Integer vkUserId;
 
     public String getVkAccessCode() {
         return vkAccessCode;
@@ -13,5 +14,13 @@ public class VKNetwork extends Network
 
     public void setVkAccessCode(String vkAccessToken) {
         this.vkAccessCode = vkAccessToken;
+    }
+
+    public Integer getVkUserId() {
+        return vkUserId;
+    }
+
+    public void setVkUserId(Integer vkUserId) {
+        this.vkUserId = vkUserId;
     }
 }

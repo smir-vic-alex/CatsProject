@@ -9,6 +9,10 @@
         <jsp:include page="topMenuClientPage.jsp"/>
     </tiles:put>
     <tiles:put name="data" type="string">
-        <c:out value="${pageContext.getAttribute('')}"/>
+        <bean:define id="form" name="ShowClientAdminVKGroupActionForm"/>
+        <c:forEach var="group" items="${form.vkGroups}">
+            <c:out value="${group.name}"/>
+            <c:out value="${group.urlPhoto}"/>
+        </c:forEach>
     </tiles:put>
 </tiles:insert>

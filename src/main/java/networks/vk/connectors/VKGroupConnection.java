@@ -42,6 +42,6 @@ public class VKGroupConnection implements VKConnector<VKGroup> {
         if (authResponse == null)
             throw new ConnectorException();
 
-        return new VKGroup(new GroupActor(1, authResponse.getAccessTokens().get(1)));
+        return new VKGroup();
     }
 }

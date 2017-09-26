@@ -6,16 +6,24 @@ import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.UserAuthResponse;
+import com.vk.api.sdk.objects.groups.GroupFull;
+import com.vk.api.sdk.objects.groups.responses.GetResponse;
+import com.vk.api.sdk.queries.groups.GroupsGetFilter;
 import entities.User;
 import entities.VKNetwork;
 import hibernate.services.NetworksService;
+import org.apache.commons.collections.CollectionUtils;
 import settings.vk.VKApiSetting;
 import settings.SettingFactory;
 import exeptions.connectors.ConnectorException;
 import networks.vk.clients.VKUser;
+import utils.StringUtils;
 import utils.WebContext;
 
 import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -44,16 +52,17 @@ public class VKUserConnector implements VKConnector<UserAuthResponse> {
         return authResponse;
     }
 
-    public void getGroups(String accessToken){
+    public List<GroupFull> getGroups(Integer userId, String accessToken){
         VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
-        UserActor userActor = new UserActor(0, accessToken);
+        UserActor userActor = new UserActor(userId, accessToken);
         try {
-            vk.groups().get(userActor).execute();
-        } catch (ApiException e) {
-            e.printStackTrace();
-        } catch (ClientException e) {
+            GetResponse response = vk.groups().get(userActor).filter(GroupsGetFilter.ADMIN).execute();
+
+            return vk.groups().getById(userActor).groupIds(StringUtils.integerListToListOfStrings(response.getItems())).execute();
+        } catch (ApiException | ClientException e) {
             e.printStackTrace();
         }
+        return Collections.emptyList();
     }
 
 }

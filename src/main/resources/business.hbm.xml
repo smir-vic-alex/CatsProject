@@ -38,6 +38,7 @@
         <property name="userId" type="java.lang.Long" column="USER_ID" not-null="true"/>
         <subclass name="entities.VKNetwork" discriminator-value="VK">
             <property name="vkAccessCode" type="java.lang.String" column="VK_ACCESS_TOKEN" not-null="false"/>
+            <property name="vkUserId" type="java.lang.Integer" column="VK_USER_ID" not-null="false"/>
         </subclass>
     </class>
 

@@ -1,18 +1,21 @@
 package actionForms;
 
+import networks.vk.clients.VKGroup;
 import org.apache.struts.action.ActionForm;
+
+import java.util.List;
 
 /**
  * Created by Виктор on 15.09.2017.
  */
 public class ShowClientAdminVKGroupActionForm extends ActionForm {
-    private Long group;
+    private List<VKGroup> vkGroups;
 
-    public Long getGroup() {
-        return group;
+    public List<VKGroup> getVkGroups() {
+        return vkGroups;
     }
 
-    public void setGroup(Long group) {
-        this.group = group;
+    public void setVkGroups(List<VKGroup> vkGroups) {
+        this.vkGroups = vkGroups;
     }
 }
