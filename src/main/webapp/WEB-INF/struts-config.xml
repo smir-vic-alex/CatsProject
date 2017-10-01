@@ -64,13 +64,14 @@
             <forward name="success" path="/WEB-INF/jsp/showAdminGroupsList.jsp"/>
         </action>
         <!--&lt;!&ndash;Добавление группы для администрирования&ndash;&gt;-->
-        <!--<action path="/private/client/addVKGroup"-->
-                <!--type="actions.vk.ClientAddVKGroupAction"-->
-                <!--name="ClientAddVKGroupActionForm"-->
-                <!--scope="request"-->
-                <!--parameter="unused">-->
-            <!--<forward name="success" path="WEB-INF/jsp/addVKGroup.jsp"/>-->
-        <!--</action>-->
+        <action path="/private/client/addVKGroup"
+                type="actions.vk.ClientAddVKGroupAction"
+                name="ClientAddVKGroupActionForm"
+                scope="request"
+                parameter="unused">
+            <forward name="error" path="/private/client/page/main.do" redirect="true"/>
+            <forward name="stub" path="/private/redirect/uri.do?code=123321123321123321" redirect="true"/>
+        </action>
         <!--Редактирование групп для администрирования-->
         <action path="/private/vklogin"
                 type="actions.vk.VKRedirectAction">
@@ -84,7 +85,14 @@
                 parameter="unused">
             <forward name="success" path="/private/client/page/main.do" redirect="true"/>
         </action>
-
+        <!--Получение code от vk.com-->
+        <action path="/private/redirect/vk/group/uri"
+                type="actions.vk.CodeVKGroupAction"
+                name="CodeVKActionForm"
+                scope="request"
+                parameter="unused">
+            <forward name="success" path="/private/client/page/main.do" redirect="true"/>
+        </action>
     </action-mappings>
     
     <message-resources key="messageResources" parameter="" null="false"/>

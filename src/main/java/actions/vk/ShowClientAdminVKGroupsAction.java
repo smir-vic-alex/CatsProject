@@ -4,9 +4,8 @@ import actionForms.ShowClientAdminVKGroupActionForm;
 import actions.LookupDispatchAction;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import entities.User;
-import entities.VKNetwork;
+import entities.VKUserNetwork;
 import hibernate.services.NetworksService;
-import networks.vk.clients.VKGroup;
 import networks.vk.connectors.VKConnectorFactory;
 import networks.vk.connectors.VKConnectorType;
 import networks.vk.connectors.VKUserConnector;
@@ -30,9 +29,9 @@ public class ShowClientAdminVKGroupsAction extends LookupDispatchAction {
     @Override
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = (User) WebContext.getCurrentRequest().getSession(false).getAttribute("user");
-        VKNetwork vkNetwork = (VKNetwork)networkService.getNetworkByUserId(user.getId());
+        VKUserNetwork vkUserNetwork = (VKUserNetwork)networkService.getNetworkByUserId(user.getId());
         VKUserConnector connector = ((VKUserConnector)VKConnectorFactory.getConnector(VKConnectorType.USER));
-        List<GroupFull> list =  connector.getGroups(vkNetwork.getVkUserId(), vkNetwork.getVkAccessCode());
+        List<GroupFull> list =  connector.getGroups(vkUserNetwork.getVkUserId(), vkUserNetwork.getVkAccessCode());
 
         ShowClientAdminVKGroupActionForm actionForm = (ShowClientAdminVKGroupActionForm) form;
         actionForm.setVkGroups(convertToVKGroupList(list));
@@ -46,6 +45,7 @@ public class ShowClientAdminVKGroupsAction extends LookupDispatchAction {
         for (GroupFull group : groupFulls) {
             VKGroup vkGroup = new VKGroup();
 
+            vkGroup.setId(group.getId());
             vkGroup.setName(group.getName());
             vkGroup.setUrlPhoto(group.getPhoto50());
             vkGroupList.add(vkGroup);

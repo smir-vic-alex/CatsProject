@@ -24,10 +24,9 @@ public class VKApiGroupSetting extends VKApiSetting {
         applicationDisplay = getProperty("settings.networks.vk.VKApiSetting.group.application.display");
         responseType = getProperty("settings.networks.vk.VKApiSetting.group.response.type");
         scope = getProperty("settings.networks.vk.VKApiSetting.group.scope");
-        //TODO добавить groupIds
-//        authUrl = String.format(applicationAuthorizeConnectionUrl, getApplicationId(),
-//                applicationDisplay, getApplicationRedirectUri(),
-//                responseType, scope, getVersion());
+        authUrl = String.format(applicationAuthorizeConnectionUrl, getApplicationId(),
+                applicationDisplay, getApplicationRedirectUri(),
+                responseType, scope, getVersion());
     }
 
     public String getAuthUrl() {

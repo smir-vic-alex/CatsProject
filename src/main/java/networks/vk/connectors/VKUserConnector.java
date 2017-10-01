@@ -9,22 +9,13 @@ import com.vk.api.sdk.objects.UserAuthResponse;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.groups.responses.GetResponse;
 import com.vk.api.sdk.queries.groups.GroupsGetFilter;
-import entities.User;
-import entities.VKNetwork;
-import hibernate.services.NetworksService;
-import org.apache.commons.collections.CollectionUtils;
 import settings.vk.VKApiSetting;
 import settings.SettingFactory;
 import exeptions.connectors.ConnectorException;
-import networks.vk.clients.VKUser;
 import utils.StringUtils;
-import utils.WebContext;
 
-import java.io.PrintStream;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Коннектор для логина пользователем

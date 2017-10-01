@@ -4,7 +4,6 @@ import actionForms.CodeVKActionForm;
 import com.vk.api.sdk.objects.UserAuthResponse;
 import entities.User;
 import hibernate.services.NetworksService;
-import networks.vk.clients.VKUser;
 import networks.vk.connectors.VKConnectorFactory;
 import networks.vk.connectors.VKConnectorType;
 import org.apache.struts.action.ActionForm;
@@ -20,16 +19,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CodeVKAction extends VKAction {
 
-    private static final NetworksService networkService = new NetworksService();
+    protected static final NetworksService networkService = new NetworksService();
 
     @Override
     public ActionForward start (ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception
     {
         CodeVKActionForm codeVKActionForm = (CodeVKActionForm) form;
         User user = (User) WebContext.getCurrentRequest().getSession(false).getAttribute("user");
-        UserAuthResponse authResponse = (UserAuthResponse) VKConnectorFactory.getConnector(VKConnectorType.USER).auth(codeVKActionForm.getCode());
-        networkService.saveOrUpdateVkNetworkCode( user.getId(), authResponse.getAccessToken());
+
+        getVKDataAndSave(user, codeVKActionForm.getCode());
 
         return mapping.findForward("success");
     }
+
+    protected void getVKDataAndSave(User user, String code) throws Exception{
+        UserAuthResponse authResponse = (UserAuthResponse) VKConnectorFactory.getConnector(VKConnectorType.USER).auth(code);
+        networkService.saveOrUpdateVkNetworkCode( user.getId(), authResponse);
+    }
+
 }

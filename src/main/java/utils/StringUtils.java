@@ -35,4 +35,11 @@ public class StringUtils {
         }
         return newList;
     }
+
+    public static String addParameterInPath(String paramKey, String paramValue, String path)
+    {
+        StringBuilder sBuilder = new StringBuilder(path);
+
+        return sBuilder.insert(sBuilder.lastIndexOf(paramKey), paramValue).toString();
+    }
 }

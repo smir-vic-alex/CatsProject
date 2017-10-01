@@ -14,8 +14,6 @@ public class VKConnectorFactory {
                 return new VKGroupConnection();
             case USER:
                 return new VKUserConnector();
-            case SERVICE:
-                return new VKServiceConnector();
             default:
                 throw new ConnectorNotFoundException();
         }

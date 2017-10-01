@@ -12,7 +12,8 @@
         <bean:define id="form" name="ShowClientAdminVKGroupActionForm"/>
         <c:forEach var="group" items="${form.vkGroups}">
             <c:out value="${group.name}"/>
-            <c:out value="${group.urlPhoto}"/>
+            <img src="${group.urlPhoto}"/>
+            <c:out value="${group.id}"/>
         </c:forEach>
     </tiles:put>
 </tiles:insert>

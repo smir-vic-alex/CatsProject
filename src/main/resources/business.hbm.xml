@@ -36,9 +36,13 @@
         <discriminator formula="TYPE" type="string" not-null="true"/>
         <property name="type" type="string" column="TYPE" not-null="true"/>
         <property name="userId" type="java.lang.Long" column="USER_ID" not-null="true"/>
-        <subclass name="entities.VKNetwork" discriminator-value="VK">
+        <subclass name="entities.VKUserNetwork" discriminator-value="VK">
             <property name="vkAccessCode" type="java.lang.String" column="VK_ACCESS_TOKEN" not-null="false"/>
             <property name="vkUserId" type="java.lang.Integer" column="VK_USER_ID" not-null="false"/>
+        </subclass>
+        <subclass name="entities.VKGroupNetwork" discriminator-value="VKG">
+            <property name="vkAccessCode" type="java.lang.String" column="VK_ACCESS_TOKEN" not-null="false"/>
+            <property name="userId" type="java.lang.Long" column="VK_USER_ID" not-null="false"/>
         </subclass>
     </class>
 

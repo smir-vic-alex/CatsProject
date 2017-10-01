@@ -1,6 +1,6 @@
 package actionForms;
 
-import networks.vk.clients.VKGroup;
+import actions.vk.VKGroup;
 import org.apache.struts.action.ActionForm;
 
 import java.util.List;

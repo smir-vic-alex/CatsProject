@@ -1,31 +1,20 @@
 package networks.vk.connectors;
 
 import com.vk.api.sdk.client.VkApiClient;
-import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.GroupAuthResponse;
-import settings.vk.VKApiGroupSetting;
 import settings.vk.VKApiSetting;
 import settings.SettingFactory;
 import exeptions.connectors.ConnectorException;
-import networks.vk.clients.VKGroup;
-
-import java.io.PrintStream;
-import java.util.Scanner;
 
 /**
  * Коннектор для группы
  * Created by Виктор on 28.05.2017.
  */
-public class VKGroupConnection implements VKConnector<VKGroup> {
-
-    private PrintStream out = System.out;
-    private Scanner in = new Scanner(System.in);
+public class VKGroupConnection implements VKConnector<GroupAuthResponse> {
 
     @Override
-    public VKGroup auth(String code) throws ConnectorException {
-
-        out.println(SettingFactory.getSetting(VKApiGroupSetting.class).getAuthUrl());
+    public GroupAuthResponse auth(String code) throws ConnectorException {
 
         VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
         VKApiSetting apiConfig = SettingFactory.getSetting(VKApiSetting.class);
@@ -42,6 +31,6 @@ public class VKGroupConnection implements VKConnector<VKGroup> {
         if (authResponse == null)
             throw new ConnectorException();
 
-        return new VKGroup();
+        return authResponse;
     }
 }

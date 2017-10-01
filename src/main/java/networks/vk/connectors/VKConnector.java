@@ -1,7 +1,6 @@
 package networks.vk.connectors;
 
 import exeptions.connectors.ConnectorException;
-import networks.vk.clients.VKClient;
 
 /**
  * Коннектор к networks.vk.com

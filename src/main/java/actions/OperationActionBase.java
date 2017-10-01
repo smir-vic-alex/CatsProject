@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class OperationActionBase extends LookupDispatchAction {
     @Override
-    public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ActionForward start(ActionMapping mapping, ActionForm frm, HttpServletRequest request, HttpServletResponse response) throws Exception {
         processActionForm();
-        return super.execute(mapping, form, request, response);
+        return super.execute(mapping, frm, request, response);
     }
 
     protected void saveError(HttpServletRequest request, String error) {
