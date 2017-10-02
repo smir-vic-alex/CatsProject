@@ -36,10 +36,10 @@ public class StringUtils {
         return newList;
     }
 
-    public static String addParameterInPath(String paramKey, String paramValue, String path)
+    public static String addParameterValueInPath(String paramKey, String paramValue, String path)
     {
         StringBuilder sBuilder = new StringBuilder(path);
-
-        return sBuilder.insert(sBuilder.lastIndexOf(paramKey), paramValue).toString();
+        int index = sBuilder.lastIndexOf(paramKey) + paramKey.length();
+        return sBuilder.insert(index, paramValue).toString();
     }
 }

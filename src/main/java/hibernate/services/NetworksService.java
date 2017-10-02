@@ -9,6 +9,8 @@ import hibernate.BusinessService;
 import hibernate.HibernateExecutor;
 import org.hibernate.query.Query;
 
+import java.util.Map;
+
 /**
  * Created by SBT-Smirnov-VA on 07.09.2017.
  */
@@ -34,16 +36,18 @@ public class NetworksService extends BusinessService {
         });
     }
 
-    //TODO не сохранились vkUserId и vkAccessCode
-    public VKGroupNetwork saveOrUpdateVkGroupNetworkCode(final Long userId, final GroupAuthResponse response){
+    public VKGroupNetwork saveOrUpdateVkGroupsNetworkCode(final Long userId, final GroupAuthResponse response){
         return new HibernateExecutor<VKGroupNetwork>().execute((session)->{
-            VKGroupNetwork vkGroupNetwork = new VKGroupNetwork();
-            vkGroupNetwork.setVkAccessCode(response.getAccessTokens().get(0));
-            vkGroupNetwork.setVkUserId(response.getAccessTokens().keySet().toArray(new Integer[1])[0]);
-            vkGroupNetwork.setUserId(userId);
-            vkGroupNetwork.setType("VKG");
-            session.saveOrUpdate(vkGroupNetwork);
-            return vkGroupNetwork;
+            for (Map.Entry<Integer, String> entry : response.getAccessTokens().entrySet())
+            {
+                VKGroupNetwork vkGroupNetwork = new VKGroupNetwork();
+                vkGroupNetwork.setVkAccessCode(entry.getValue());
+                vkGroupNetwork.setVkUserId(entry.getKey());
+                vkGroupNetwork.setUserId(userId);
+                vkGroupNetwork.setType("VKG");
+                session.saveOrUpdate(vkGroupNetwork);
+            }
+            return null;
         });
     }
 

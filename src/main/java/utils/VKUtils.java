@@ -8,8 +8,7 @@ public class VKUtils {
 
     public static final String VK_GROUP_IDS = "group_ids=";
 
-    //TODO вставляется перед group_ids=
     public static String insertGroupIdIntoRequestUrl(String param, String url){
-        return StringUtils.addParameterInPath(VK_GROUP_IDS, param, url);
+        return StringUtils.addParameterValueInPath(VK_GROUP_IDS, param, url);
     }
 }

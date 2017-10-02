@@ -13,6 +13,6 @@ public class CodeVKGroupAction extends CodeVKAction {
     @Override
     protected void getVKDataAndSave(User user, String code) throws Exception {
         GroupAuthResponse authResponse = (GroupAuthResponse) VKConnectorFactory.getConnector(VKConnectorType.GROUP).auth(code);
-        networkService.saveOrUpdateVkGroupNetworkCode(user.getId(), authResponse);
+        networkService.saveOrUpdateVkGroupsNetworkCode(user.getId(), authResponse);
     }
 }
