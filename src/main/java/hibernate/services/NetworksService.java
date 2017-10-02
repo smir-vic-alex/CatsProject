@@ -28,14 +28,15 @@ public class NetworksService extends BusinessService {
         });
     }
 
-    public Network getNetworkByUserId(final Long userId){
+    public Network getNetworkByUserId(final Long userId, final String type){
         return new HibernateExecutor<Network>().execute((session) -> {
             Query<Network> query = session.createNamedQuery("entities.get.network.by.user.id", Network.class);
             query.setParameter("userId", userId);
+            query.setParameter("type", type);
             return query.getSingleResult();
         });
     }
-
+    //TODO не происходит апдейт записи
     public VKGroupNetwork saveOrUpdateVkGroupsNetworkCode(final Long userId, final GroupAuthResponse response){
         return new HibernateExecutor<VKGroupNetwork>().execute((session)->{
             for (Map.Entry<Integer, String> entry : response.getAccessTokens().entrySet())

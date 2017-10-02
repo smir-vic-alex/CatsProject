@@ -42,7 +42,7 @@
         </subclass>
         <subclass name="entities.VKGroupNetwork" discriminator-value="VKG">
             <property name="vkAccessCode" type="java.lang.String" column="VK_ACCESS_TOKEN" not-null="false"/>
-            <property name="userId" type="java.lang.Long" column="VK_USER_ID" not-null="false"/>
+            <property name="vkUserId" type="java.lang.Integer" column="VK_USER_ID" not-null="false"/>
         </subclass>
     </class>
 
@@ -80,7 +80,7 @@
     </query>
 
     <query name="entities.get.network.by.user.id">
-        select network from entities.Network as network where network.userId = :userId
+        select network from entities.Network as network where network.userId = :userId and network.type = :type
     </query>
 
     <sql-query name="get.user.accesses">

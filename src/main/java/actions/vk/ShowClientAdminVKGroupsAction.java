@@ -29,7 +29,7 @@ public class ShowClientAdminVKGroupsAction extends LookupDispatchAction {
     @Override
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         User user = (User) WebContext.getCurrentRequest().getSession(false).getAttribute("user");
-        VKUserNetwork vkUserNetwork = (VKUserNetwork)networkService.getNetworkByUserId(user.getId());
+        VKUserNetwork vkUserNetwork = (VKUserNetwork)networkService.getNetworkByUserId(user.getId(), "VK");
         VKUserConnector connector = ((VKUserConnector)VKConnectorFactory.getConnector(VKConnectorType.USER));
         List<GroupFull> list =  connector.getGroups(vkUserNetwork.getVkUserId(), vkUserNetwork.getVkAccessCode());
 
