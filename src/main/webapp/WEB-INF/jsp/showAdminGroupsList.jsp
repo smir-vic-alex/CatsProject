@@ -11,9 +11,12 @@
     <tiles:put name="data" type="string">
         <bean:define id="form" name="ShowClientAdminVKGroupActionForm"/>
         <c:forEach var="group" items="${form.vkGroups}">
-            <c:out value="${group.name}"/>
-            <img src="${group.urlPhoto}"/>
-            <c:out value="${group.id}"/>
+            <html:form action="/private/client/addVKGroup">
+                <c:out value="${group.name}"/>
+                <img src="${group.urlPhoto}"/>
+                <html:hidden property="groupId" value="${group.id}"/>
+                <html:submit value="Добавить группу"/>
+            </html:form>
         </c:forEach>
     </tiles:put>
 </tiles:insert>
