@@ -72,11 +72,6 @@
             <forward name="error" path="/private/client/page/main.do" redirect="true"/>
             <forward name="stub" path="/private/redirect/uri.do?code=123321123321123321" redirect="true"/>
         </action>
-        <!--Редактирование групп для администрирования-->
-        <action path="/private/vklogin"
-                type="actions.vk.VKRedirectAction">
-            <forward name="redirect" path="https://oauth.vk.com/authorize?"/>
-        </action>
         <!--Получение code от vk.com-->
         <action path="/private/redirect/uri"
                 type="actions.vk.CodeVKAction"
