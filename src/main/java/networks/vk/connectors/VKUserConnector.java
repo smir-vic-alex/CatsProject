@@ -1,6 +1,8 @@
 package networks.vk.connectors;
 
 import com.vk.api.sdk.client.VkApiClient;
+import com.vk.api.sdk.client.actors.Actor;
+import com.vk.api.sdk.client.actors.GroupActor;
 import com.vk.api.sdk.client.actors.UserActor;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
@@ -8,6 +10,7 @@ import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.UserAuthResponse;
 import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.groups.responses.GetResponse;
+import com.vk.api.sdk.objects.wall.responses.PostResponse;
 import com.vk.api.sdk.queries.groups.GroupsGetFilter;
 import settings.vk.VKApiSetting;
 import settings.SettingFactory;
@@ -54,6 +57,16 @@ public class VKUserConnector implements VKConnector<UserAuthResponse> {
             e.printStackTrace();
         }
         return Collections.emptyList();
+    }
+
+    public PostResponse createPost(UserActor actor, Integer groupId, String message){
+        VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
+        try{
+            return vk.wall().post(actor).ownerId(groupId).fromGroup(true).message(message).execute();
+        }catch (ApiException | ClientException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
