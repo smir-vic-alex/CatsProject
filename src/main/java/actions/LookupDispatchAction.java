@@ -16,7 +16,8 @@ import java.util.Map;
  */
 public abstract class LookupDispatchAction extends DispatchAction {
 
-    public static final String REQUEST_PARAMETER_NAME = "operation";
+    private static final String REQUEST_PARAMETER_NAME = "operation";
+    private static final String SUCCESS = "success";
     private Map<String, String> keyMethodMap = null;
     private final Object synkRoot = new Object();
 
@@ -74,4 +75,7 @@ public abstract class LookupDispatchAction extends DispatchAction {
     public abstract ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
             throws Exception;
 
+    protected ActionForward success(ActionMapping mapping){
+        return mapping.findForward(SUCCESS);
+    }
 }

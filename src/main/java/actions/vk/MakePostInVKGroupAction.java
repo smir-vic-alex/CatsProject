@@ -6,13 +6,11 @@ import entities.User;
 import entities.VKGroupNetwork;
 import entities.VKUserNetwork;
 import hibernate.services.NetworksService;
-import networks.vk.connectors.VKConnectorFactory;
-import networks.vk.connectors.VKConnectorType;
-import networks.vk.connectors.VKUserConnector;
+import networks.vk.connectors.VKConnectorManager;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import utils.WebContext;
+import utils.UserUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,17 +19,20 @@ public class MakePostInVKGroupAction extends VKAction
 {
     private static final NetworksService networksService = new NetworksService();
     @Override
-    public ActionForward start(ActionMapping mapping, ActionForm frm, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ActionForward start(ActionMapping mapping, ActionForm frm, HttpServletRequest request, HttpServletResponse response) throws Exception
+    {
         MakePostInVKGroupActionForm form = (MakePostInVKGroupActionForm) frm;
 
-        VKUserConnector connector = (VKUserConnector)VKConnectorFactory.getConnector(VKConnectorType.USER);
-        User user = (User) WebContext.getCurrentRequest().getSession(false).getAttribute("user");
-
+        User user = UserUtils.getCurrentUser();
         //TODO доделать поиск по id группы из actionForm
-        VKGroupNetwork groupNetwork = (VKGroupNetwork)networksService.getNetworkByUserId(user.getId(), "VKG");
-        VKUserNetwork userNetwork = (VKUserNetwork) networksService.getNetworkByUserId(user.getId(), "VK");
-        connector.createPost(new UserActor(userNetwork.getVkUserId(), userNetwork.getVkAccessCode()), -groupNetwork.getVkUserId(), form.getMessage());
+        VKGroupNetwork groupNetwork = networksService.getVKNetworkByUserId(user.getId(), VKGroupNetwork.class);
+        VKUserNetwork userNetwork = networksService.getVKNetworkByUserId(user.getId(), VKUserNetwork.class);
+        VKConnectorManager.getInstance().createPost(getUserActor(userNetwork), -groupNetwork.getVkUserId(), form.getMessage());
 
-        return mapping.findForward("success");
+        return success(mapping);
+    }
+
+    private UserActor getUserActor(VKUserNetwork vkUserNetwork){
+        return new UserActor(vkUserNetwork.getVkUserId(), vkUserNetwork.getVkAccessCode());
     }
 }

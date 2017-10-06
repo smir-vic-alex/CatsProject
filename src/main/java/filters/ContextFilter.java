@@ -25,13 +25,13 @@ public class ContextFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         WebContext.setCurrentRequest(request);
-        WebContext.setCurrentResponce(response);
+        WebContext.setCurrentResponse(response);
 
         try {
             filterChain.doFilter(servletRequest, servletResponse);
         } finally {
             WebContext.setCurrentRequest(null);
-            WebContext.setCurrentResponce(null);
+            WebContext.setCurrentResponse(null);
         }
     }
 

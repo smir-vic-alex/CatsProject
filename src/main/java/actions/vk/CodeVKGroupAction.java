@@ -1,9 +1,7 @@
 package actions.vk;
 
-import com.vk.api.sdk.objects.GroupAuthResponse;
 import entities.User;
-import networks.vk.connectors.VKConnectorFactory;
-import networks.vk.connectors.VKConnectorType;
+import networks.vk.connectors.VKConnectorManager;
 
 /**
  *
@@ -11,8 +9,8 @@ import networks.vk.connectors.VKConnectorType;
  */
 public class CodeVKGroupAction extends CodeVKAction {
     @Override
-    protected void getVKDataAndSave(User user, String code) throws Exception {
-        GroupAuthResponse authResponse = (GroupAuthResponse) VKConnectorFactory.getConnector(VKConnectorType.GROUP).auth(code);
-        networkService.saveOrUpdateVkGroupsNetworkCode(user.getId(), authResponse);
+    protected void getVKDataAndSave(User user, String code) throws Exception
+    {
+        networkService.saveOrUpdateVkGroupsNetworkCode(user.getId(), VKConnectorManager.getInstance().authGroup(code));
     }
 }

@@ -11,7 +11,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import utils.StringUtils;
-import utils.WebContext;
+import utils.UserUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,10 +32,10 @@ public class RegisterAction extends LookupDispatchAction {
 
         if (StringUtils.isNotEmpty(registerActionForm.getLogin()) && authService.findByLogin(registerActionForm.getLogin()) == null){
             User user = createNewUser(registerActionForm.getLogin(), registerActionForm.getPassword());
-            WebContext.getCurrentRequest().getSession(false).setAttribute("login", true);
-            WebContext.getCurrentRequest().getSession(false).setAttribute("user", user);
+            UserUtils.setUserIsLogin();
+            UserUtils.setCurrentUser(user);
         }
-        return mapping.findForward("success");
+        return success(mapping);
     }
 
     private User createNewUser(final String lgn, final String passwd){

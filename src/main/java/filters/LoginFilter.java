@@ -1,5 +1,7 @@
 package filters;
 
+import utils.UserUtils;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,15 +36,11 @@ public class LoginFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         //Разрешаем переходить по страницам только если пользователь прошел авторизацию, либо на разрешенные урлы
-        if (userIsLogin(request) || isAcceptedUrl(request)) {
+        if (UserUtils.isUserLogin() || isAcceptedUrl(request)) {
             filterChain.doFilter(servletRequest, servletResponse);
         } else {
             response.sendRedirect(request.getContextPath() + indexPageUrl);
         }
-    }
-
-    private boolean userIsLogin(HttpServletRequest request) {
-        return request.getSession().getAttribute("login") != null && (boolean) request.getSession().getAttribute("login");
     }
 
     private boolean isAcceptedUrl(HttpServletRequest request) {

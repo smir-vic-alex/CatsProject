@@ -1,6 +1,5 @@
 package actions;
 
-import accesses.EncryptUtils;
 import actionForms.LoginActionForm;
 import entities.User;
 import exeptions.access.LoginException;
@@ -11,7 +10,7 @@ import entities.Password;
 import hibernate.services.UserService;
 import org.apache.struts.action.*;
 import utils.StringUtils;
-import utils.WebContext;
+import utils.UserUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,15 +37,15 @@ public class LoginAction extends OperationActionBase {
     }
 
     private void sessionUpdate(User user) {
-        WebContext.getCurrentRequest().getSession(false).setAttribute("login", true);
-        WebContext.getCurrentRequest().getSession(false).setAttribute("user", user);
+        UserUtils.setUserIsLogin();
+        UserUtils.setCurrentUser(user);
     }
 
     private void checkPassword(Long loginId, String inputPassword) throws LoginException {
 
         Password password = authService.findPasswordByLoginId(loginId);
 
-            //Разный хеш!!!!
+            //TODO Разный хеш!!!!
 //        if (!password.getHash().equals(EncryptUtils.code(inputPassword))) {
 //            throwLoginException();
 //        }
@@ -70,12 +69,8 @@ public class LoginAction extends OperationActionBase {
     }
 
     private void incrementAttemptsCount() {
-        Integer attemptsCount = (Integer) WebContext.getCurrentRequest().getSession(false).getAttribute("attemptsCount");
-        if (attemptsCount == null) {
-            attemptsCount = 0;
-        }
-        attemptsCount++;
-        WebContext.getCurrentRequest().getSession(false).setAttribute("attemptsCount", attemptsCount);
+        Integer attemptsCount = UserUtils.getAttemptsCounts();
+        UserUtils.setAttemptsCounts(++attemptsCount);
     }
 
 }
