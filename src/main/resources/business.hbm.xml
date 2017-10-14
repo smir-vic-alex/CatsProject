@@ -79,8 +79,16 @@
         select password from entities.Password as password where password.loginId = :loginId
     </query>
 
-    <query name="entities.get.network.by.user.id">
-        select network from entities.Network as network where network.userId = :userId and network.type = :type
+    <query name="entities.get.user.vk.by.user.id">
+        select network from entities.VKUserNetwork as network where network.userId = :userId and network.type = 'VK'
+    </query>
+
+    <query name="entities.get.groups.vk.by.user.id">
+        select network from entities.VKGroupNetwork as network where network.userId = :userId and network.type = 'VKG'
+    </query>
+
+    <query name="entities.get.group.vk.by.user.id">
+        select network from entities.VKGroupNetwork as network where network.vkUserId = :vkUserId and network.type = 'VKG'
     </query>
 
     <sql-query name="get.user.accesses">

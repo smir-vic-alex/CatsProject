@@ -5,6 +5,15 @@ import org.apache.struts.action.ActionForm;
 public class MakePostInVKGroupActionForm extends ActionForm {
     private String message;
     private String groupId;
+    private String typeNetwork;
+
+    public String getTypeNetwork() {
+        return typeNetwork;
+    }
+
+    public void setTypeNetwork(String typeNetwork) {
+        this.typeNetwork = typeNetwork;
+    }
 
     public String getMessage() {
         return message;

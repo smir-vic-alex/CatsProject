@@ -14,6 +14,7 @@
         <form-bean name="CodeVKActionForm" type="actionForms.CodeVKActionForm"/>
         <form-bean name="ShowClientAdminVKGroupActionForm" type="actionForms.ShowClientAdminVKGroupActionForm"/>
         <form-bean name="MakePostInVKGroupActionForm" type="actionForms.MakePostInVKGroupActionForm"/>
+        <form-bean name="CreatePostActionForm" type="actionForms.CreatePostActionForm"/>
     </form-beans>
 
     <global-exceptions>
@@ -90,13 +91,22 @@
             <forward name="success" path="/private/client/page/main.do" redirect="true"/>
         </action>
         <!--Опубликаовать запись на стене сообщества-->
-        <action path="/private/wall/post/message"
+        <action path="/private/send/post"
                 type="actions.vk.MakePostInVKGroupAction"
                 name="MakePostInVKGroupActionForm"
                 scope="request"
                 parameter="unused">
             <forward name="success" path="/WEB-INF/jsp/postMessage.jsp"/>
         </action>
+
+        <action path="/private/create/post"
+                type="actions.CreatePostAction"
+                name="CreatePostActionForm"
+                scope="request"
+                parameter="unused">
+            <forward name="success" path="/WEB-INF/jsp/createPost.jsp"/>
+        </action>
+
     </action-mappings>
     
     <message-resources key="messageResources" parameter="" null="false"/>

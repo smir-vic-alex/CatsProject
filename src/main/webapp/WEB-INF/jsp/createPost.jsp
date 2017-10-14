@@ -9,6 +9,16 @@
         <jsp:include page="topMenuClientPage.jsp"/>
     </tiles:put>
     <tiles:put name="data" type="string">
-        posted
+        <bean:define id="form" name="CreatePostActionForm"/>
+
+        <c:forEach var="network" items="${form.availableNetworks}">
+            <html:form action="/private/send/post">
+                <c:out value="${network.vkUserId}"/>
+                <html:hidden property="groupId" value="${network.vkUserId}"/>
+                <html:hidden property="typeNetwork" value="${network.type}"/>
+                <html:textarea property="message"/>
+                <html:submit value="Разместить пост"/>
+            </html:form>
+        </c:forEach>
     </tiles:put>
 </tiles:insert>

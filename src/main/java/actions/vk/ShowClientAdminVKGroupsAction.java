@@ -28,7 +28,7 @@ public class ShowClientAdminVKGroupsAction extends LookupDispatchAction
     public ActionForward start(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception
     {
         User user = UserUtils.getCurrentUser();
-        VKUserNetwork vkUserNetwork = networkService.getVKNetworkByUserId(user.getId(), VKUserNetwork.class);
+        VKUserNetwork vkUserNetwork = networkService.getVKUserNetworkByUserId(user.getId());
         VKConnectorManager connector = VKConnectorManager.getInstance();
         List<GroupFull> list =  connector.getGroups(vkUserNetwork);
 

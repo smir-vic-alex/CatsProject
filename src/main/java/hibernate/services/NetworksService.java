@@ -9,6 +9,7 @@ import hibernate.BusinessService;
 import hibernate.HibernateExecutor;
 import org.hibernate.query.Query;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,31 +32,56 @@ public class NetworksService extends BusinessService<Network> {
         });
     }
 
-    public <T extends Network> T getVKNetworkByUserId(final Long userId, final Class<T> clazz)
+    public VKUserNetwork getVKUserNetworkByUserId(final Long userId)
     {
-        return new HibernateExecutor<T>().execute((session) ->
+        return new HibernateExecutor<VKUserNetwork>().execute((session) ->
         {
             try
             {
-                Query<T> query = session.createNamedQuery("entities.get.network.by.user.id", clazz);
+                Query<VKUserNetwork> query = session.createNamedQuery("entities.get.user.vk.by.user.id", VKUserNetwork.class);
                 query.setParameter("userId", userId);
-                query.setParameter("type", getVkType(clazz));
                 return query.getSingleResult();
             }
             catch (Exception e) {
+                e.printStackTrace();
                 return null;
             }
         });
     }
 
-    private static <T extends Network>String getVkType(Class<T> clazz) throws Exception {
-        if (VKUserNetwork.class == clazz)
-            return "VK";
-        else if (VKGroupNetwork.class == clazz)
-            return "VKG";
-        throw new Exception();
+    public List<VKGroupNetwork> getVKGroupNetworksByUserId(final Long userId)
+    {
+        return new HibernateExecutor<List<VKGroupNetwork>>().execute((session) ->
+        {
+            try
+            {
+                Query<VKGroupNetwork> query = session.createNamedQuery("entities.get.groups.vk.by.user.id", VKGroupNetwork.class);
+                query.setParameter("userId", userId);
+                return query.list();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        });
     }
 
+    public VKGroupNetwork getVKGroupNetworkByUserId(final Integer vkUserId)
+    {
+        return new HibernateExecutor<VKGroupNetwork>().execute((session) ->
+        {
+            try
+            {
+                Query<VKGroupNetwork> query = session.createNamedQuery("entities.get.group.vk.by.user.id", VKGroupNetwork.class);
+                query.setParameter("vkUserId", vkUserId);
+                return query.uniqueResult();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        });
+    }
 
     //TODO не происходит апдейт записи
     public VKGroupNetwork saveOrUpdateVkGroupsNetworkCode(final Long userId, final GroupAuthResponse response)

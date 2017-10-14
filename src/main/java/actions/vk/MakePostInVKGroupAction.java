@@ -24,9 +24,8 @@ public class MakePostInVKGroupAction extends VKAction
         MakePostInVKGroupActionForm form = (MakePostInVKGroupActionForm) frm;
 
         User user = UserUtils.getCurrentUser();
-        //TODO доделать поиск по id группы из actionForm
-        VKGroupNetwork groupNetwork = networksService.getVKNetworkByUserId(user.getId(), VKGroupNetwork.class);
-        VKUserNetwork userNetwork = networksService.getVKNetworkByUserId(user.getId(), VKUserNetwork.class);
+        VKGroupNetwork groupNetwork = networksService.getVKGroupNetworkByUserId(Integer.parseInt(form.getGroupId()));
+        VKUserNetwork userNetwork = networksService.getVKUserNetworkByUserId(user.getId());
         VKConnectorManager.getInstance().createPost(getUserActor(userNetwork), -groupNetwork.getVkUserId(), form.getMessage());
 
         return success(mapping);
