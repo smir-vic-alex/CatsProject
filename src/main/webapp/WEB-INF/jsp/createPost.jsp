@@ -17,6 +17,7 @@
                 <html:hidden property="groupId" value="${network.vkUserId}"/>
                 <html:hidden property="typeNetwork" value="${network.type}"/>
                 <html:textarea property="message"/>
+                <html:text property="time"/>
                 <html:submit value="Разместить пост"/>
             </html:form>
         </c:forEach>

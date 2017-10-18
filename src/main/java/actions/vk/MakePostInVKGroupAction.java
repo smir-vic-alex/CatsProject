@@ -26,7 +26,8 @@ public class MakePostInVKGroupAction extends VKAction
         User user = UserUtils.getCurrentUser();
         VKGroupNetwork groupNetwork = networksService.getVKGroupNetworkByUserId(Integer.parseInt(form.getGroupId()));
         VKUserNetwork userNetwork = networksService.getVKUserNetworkByUserId(user.getId());
-        VKConnectorManager.getInstance().createPost(getUserActor(userNetwork), -groupNetwork.getVkUserId(), form.getMessage());
+
+        VKConnectorManager.getInstance().createPost(getUserActor(userNetwork), -groupNetwork.getVkUserId(), form.getMessage(), form.getTime());
 
         return success(mapping);
     }

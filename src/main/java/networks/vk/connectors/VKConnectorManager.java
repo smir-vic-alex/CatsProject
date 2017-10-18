@@ -11,12 +11,14 @@ import com.vk.api.sdk.objects.groups.GroupFull;
 import com.vk.api.sdk.objects.groups.responses.GetResponse;
 import com.vk.api.sdk.objects.wall.responses.PostResponse;
 import com.vk.api.sdk.queries.groups.GroupsGetFilter;
+import com.vk.api.sdk.queries.wall.WallPostQuery;
 import entities.VKUserNetwork;
 import settings.vk.VKApiSetting;
 import settings.SettingFactory;
 import exeptions.connectors.ConnectorException;
 import utils.StringUtils;
 
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -69,12 +71,20 @@ public class VKConnectorManager
         return Collections.emptyList();
     }
 
-    public PostResponse createPost(UserActor actor, Integer groupId, String message)
+    public PostResponse createPost(UserActor actor, Integer groupId, String message, Integer time)
     {
         VkApiClient vk = new VkApiClient(HttpTransportClient.getInstance());
         try
         {
-            return vk.wall().post(actor).ownerId(groupId).fromGroup(true).message(message).execute();
+            WallPostQuery query = vk.wall().post(actor);
+
+            query.ownerId(groupId);
+            query.fromGroup(true);
+            query.message(message);
+            if(time != null) {
+                query.publishDate((int)(System.currentTimeMillis() / 1000L) + time);
+            }
+            return query.execute();
         }
         catch (ApiException | ClientException e) {
             e.printStackTrace();
