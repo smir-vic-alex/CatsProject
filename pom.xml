@@ -22,6 +22,14 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.4.6.v20170531</version>
+                <configuration>
+                    <httpConnector>
+                        <port>8087</port>
+                    </httpConnector>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -47,13 +55,13 @@
         </dependency>
 
 
-        <!--<dependency>-->
-            <!--<groupId>ojdbc6</groupId>-->
-            <!--<artifactId>com.ojdbc6</artifactId>-->
-            <!--<version>1.0</version>-->
-            <!--<scope>system</scope>-->
-            <!--<systemPath>C:/Users/Виктор/.m2/repository/oracle/ojdbc6/11.2.0.2.0/ojdbc6.jar</systemPath>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>ojdbc6</groupId>
+            <artifactId>com.ojdbc6</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>C:/Users/Виктор/.m2/repository/oracle/ojdbc6/11.2.0.2.0/ojdbc6.jar</systemPath>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate</groupId>
